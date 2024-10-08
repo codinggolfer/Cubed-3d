@@ -53,3 +53,7 @@ dkms.conf
 
 # Vscode
 *.vscode
+
+#MLX
+mlx*
+MLX42
