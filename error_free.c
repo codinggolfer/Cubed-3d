@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 13:33:23 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/10/09 13:50:07 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/10/09 15:05:58 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,16 @@ int	count_arg_array(char **array)
 	while (array[i] != NULL)
 		i++;
 	return (i);
+}
+
+void free_structs(t_data *data)
+{
+	free (data->img->ceiling);
+	free (data->img->floor);
+	free (data->img->ea);
+	free (data->img->so);
+	free (data->img->we);
+	free (data->img->no);
+	free (data->img);
+	free (data);
 }

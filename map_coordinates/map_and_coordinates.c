@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 12:44:02 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/10/09 14:40:54 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/10/09 16:01:56 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,17 @@ static void	fill_coordinates(char **coordArr, t_data *data)
 	i = 0;
 	while (coordArr[i])
 	{
-		//printf("here\n");	
-		if (ft_strncmp("NO ", coordArr[i], 3))
+		if (!ft_strncmp("NO ", coordArr[i], 3))
 			fill_coord_struct_no(coordArr[i], data);
-		else if (ft_strncmp("SO ", coordArr[i], 3))
+		else if (!ft_strncmp("SO ", coordArr[i], 3))
 			fill_coord_struct_so(coordArr[i], data);
-		else if (ft_strncmp("WE ", coordArr[i], 3))
+		else if (!ft_strncmp("WE ", coordArr[i], 3))
 			fill_coord_struct_we(coordArr[i], data);
-		else if (ft_strncmp("EA ", coordArr[i], 3))
+		else if (!ft_strncmp("EA ", coordArr[i], 3))
 			fill_coord_struct_ea(coordArr[i], data);
-		else if (ft_strncmp("C ", coordArr[i], 2))
+		else if (!ft_strncmp("C ", coordArr[i], 2))
 			fill_ceiling_struct(coordArr[i], data);
-		else if (ft_strncmp("F ", coordArr[i], 2))
+		else if (!ft_strncmp("F ", coordArr[i], 2))
 			fill_floor_struct(coordArr[i], data);
 		i++;
 	}
@@ -49,6 +48,7 @@ void	find_coordinates(int fd, t_data *data)
 		if (temp && ft_isdigit(temp[0]))
 		{
 			free(temp);
+			temp = get_next_line(-1);
 			break ;
 		}
 		if (temp == NULL)
@@ -62,4 +62,5 @@ void	find_coordinates(int fd, t_data *data)
 		free(temp);
 	}
 	fill_coordinates(ft_split(line, '\n'), data);
+	free (line);
 }

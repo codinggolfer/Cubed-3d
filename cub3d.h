@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 13:07:01 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/10/09 13:52:58 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/10/09 15:03:48 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,6 @@ void	fill_floor_struct(char *floor, t_data *data);
 void	ft_error(char *msg);
 int		count_arg_array(char **array);
 void	free_2darray(char **array);
+void	free_structs(t_data *data);
 
 #endif

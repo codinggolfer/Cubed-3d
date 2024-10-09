@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 12:12:30 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/10/09 14:41:53 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/10/09 15:17:00 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,18 @@ int main(int ac, char **av)
 		check_map(av[1], data);
 		
 		printf("%s\n", data->img->no);
-		//printf("%s\n", data.img.);
 		printf("%s\n", data->img->ea);
-		printf("HERE\n");
 		printf("%s\n", data->img->we);
-		printf("%s\n", data->img->ceiling);
-		printf("%s\n", data->img->floor);
-		exit (0);
+		printf("%s\n", data->img->so);
+		printf("ceiling: %s\n", data->img->ceiling);
+		printf("floor: %s\n", data->img->floor);
+		//exit (0);
 		//init_game(); //TOOD
 		//run_game(); // TODO
 		//free_stuff(); //TODO
 	}
-	
-
-	ft_printf ("%s\n", "invalid amount of arguments");
-	return (0);
+	else
+		ft_printf ("%s\n", "invalid amount of arguments");
+	free_structs(data);
+	exit (0);
 }

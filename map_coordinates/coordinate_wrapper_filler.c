@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 13:16:29 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/10/09 14:44:16 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/10/09 16:06:37 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,11 @@
 void	fill_coord_struct_no(char *coordStr, t_data *data)
 {
 	while (*coordStr != '.')
+	{
+		if (*coordStr == '\0')
+			return ;
 		coordStr++;
-	printf("%s\n", coordStr);
+	}
 	data->img->no = ft_strdup(coordStr);
 	if (!data->img->no)
 	{
@@ -27,7 +30,11 @@ void	fill_coord_struct_no(char *coordStr, t_data *data)
 void	fill_coord_struct_so(char *coordStr, t_data *data)
 {
 	while (*coordStr != '.')
+	{
+		if (*coordStr == '\0')
+			return ;
 		coordStr++;
+	}
 	data->img->so = ft_strdup(coordStr);
 	if (!data->img->so)
 	{
@@ -38,7 +45,11 @@ void	fill_coord_struct_so(char *coordStr, t_data *data)
 void	fill_coord_struct_we(char *coordStr, t_data *data)
 {
 	while (*coordStr != '.')
+	{
+		if (*coordStr == '\0')
+			return ;
 		coordStr++;
+	}
 	data->img->we = ft_strdup(coordStr);
 	if (!data->img->we)
 	{
@@ -49,7 +60,11 @@ void	fill_coord_struct_we(char *coordStr, t_data *data)
 void	fill_coord_struct_ea(char *coordStr, t_data *data)
 {
 	while (*coordStr != '.')
+	{
+		if (*coordStr == '\0')
+			return ;
 		coordStr++;
+	}
 	data->img->ea = ft_strdup(coordStr);
 	if (!data->img->ea)
 	{
