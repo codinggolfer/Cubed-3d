@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 13:07:01 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/10/08 14:45:14 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/10/09 13:52:58 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 # include "./libft/libft.h"
 # include <math.h>
 # include "MLX42/include/MLX42/MLX42.h"
-#include <fcntl.h>
+# include <fcntl.h>
+# include <stdio.h> //remove if needed
 
 // struct s_mlx
 // {
@@ -31,6 +32,7 @@ typedef struct s_img
 	char	*we;
 	char	*floor;
 	char	*ceiling;
+	char	**map;
 }	t_img;
 
 
@@ -39,7 +41,21 @@ typedef struct s_data
 	t_img *img;
 }	t_data;
 
-void	check_map(char *str);
+//map parser here
+void	check_map(char *str, t_data *data);
+void	find_coordinates(int fd, t_data *data);
+
+//coordinate, floor and ceiling filler wrapper functions
+void	fill_coord_struct_no(char *coordStr, t_data *data);
+void	fill_coord_struct_so(char *coordStr, t_data *data);
+void	fill_coord_struct_we(char *coordStr, t_data *data);
+void	fill_coord_struct_ea(char *coordStr, t_data *data);
+void	fill_ceiling_struct(char *ceiling, t_data *data);
+void	fill_floor_struct(char *floor, t_data *data);
+
+//free functions here
 void	ft_error(char *msg);
+int		count_arg_array(char **array);
+void	free_2darray(char **array);
 
 #endif

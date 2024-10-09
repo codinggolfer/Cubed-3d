@@ -3,6 +3,10 @@ NAME	=	cub3D
 FILES	=	main.c \
 			parse/map_parse.c \
 			error_free.c \
+			map_coordinates/coordinate_wrapper_filler.c \
+			map_coordinates/floor_ceiling_wrapper_filler.c \
+			map_coordinates/map_and_coordinates.c  \
+
 
 LIBFT	=	libft/libft.a
 
@@ -15,7 +19,7 @@ LIBS	= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
 FtoO	=	$(FILES:.c=.o)
 
 CC		=	cc
-CFLAGS	=	-Wall -Wextra -Werror -Ofast
+CFLAGS	=	-Wall -Wextra -Werror -Ofast #-g -fsanitize=address
 RM		=	rm -f
 
 all:	$(LIBFT) libmlx $(NAME)

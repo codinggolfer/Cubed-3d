@@ -1,54 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_free.c                                       :+:      :+:    :+:   */
+/*   floor_ceiling_wrapper_filler.c                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/08 13:33:23 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/10/09 13:50:07 by eagbomei         ###   ########.fr       */
+/*   Created: 2024/10/09 13:17:50 by eagbomei          #+#    #+#             */
+/*   Updated: 2024/10/09 13:47:47 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
 
-void ft_error(char *msg)
+void	fill_floor_struct(char *floor, t_data *data)
 {
+	int	comma;
 	int	i;
-
+	
 	i = 0;
-	//free function here
-
-	while (msg[i])
-		write(1, &msg[i++], 1);
-	exit (1);
-}
-
-void	free_2darray(char **array)
-{
-	int	i;
-	int	len;
-
-	i = 0;
-	if (!array)
-		return ;
-	len = count_arg_array(array);
-	while (i < len)
+	comma = 0;
+	while(floor[i])
 	{
-		free (array[i]);
-		i++;
+		if (floor[i] == ',')
+			comma++;
 	}
-	free (array);
+	if (comma == 2)
+		data->img->floor = ft_strtrim(floor + 1, " ");
 }
 
-int	count_arg_array(char **array)
+void	fill_ceiling_struct(char *ceiling, t_data *data)
 {
+	int	comma;
 	int	i;
-
+	
 	i = 0;
-	if (!array)
-		return (0);
-	while (array[i] != NULL)
-		i++;
-	return (i);
+	comma = 0;
+	while(ceiling[i])
+	{
+		if (ceiling[i] == ',')
+			comma++;
+	}
+	if (comma == 2)
+		data->img->ceiling = ft_strtrim(ceiling + 1, " ");
 }
