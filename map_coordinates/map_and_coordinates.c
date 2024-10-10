@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 12:44:02 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/10/09 16:01:56 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/10/10 16:21:55 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ void	find_coordinates(int fd, t_data *data)
 		temp = get_next_line(fd);
 		if (temp && ft_isdigit(temp[0]))
 		{
+			data->img->top = ft_strdup(temp);
 			free(temp);
-			temp = get_next_line(-1);
 			break ;
 		}
 		if (temp == NULL)

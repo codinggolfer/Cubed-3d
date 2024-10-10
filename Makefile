@@ -6,6 +6,8 @@ FILES	=	main.c \
 			map_coordinates/coordinate_wrapper_filler.c \
 			map_coordinates/floor_ceiling_wrapper_filler.c \
 			map_coordinates/map_and_coordinates.c  \
+			find_map/find_and_fill_map.c \
+			map_coordinates/coordinate_validation.c \
 
 
 LIBFT	=	libft/libft.a

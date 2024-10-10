@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 13:33:23 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/10/09 15:05:58 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/10/10 13:53:24 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void ft_error(char *msg)
 	int	i;
 
 	i = 0;
-	//free function here
 
 	while (msg[i])
 		write(1, &msg[i++], 1);
@@ -55,12 +54,22 @@ int	count_arg_array(char **array)
 
 void free_structs(t_data *data)
 {
-	free (data->img->ceiling);
-	free (data->img->floor);
-	free (data->img->ea);
-	free (data->img->so);
-	free (data->img->we);
-	free (data->img->no);
+	if (data->img->ceiling)
+		free (data->img->ceiling);
+	if (data->img->floor)
+		free (data->img->floor);
+	if (data->img->ea)	
+		free (data->img->ea);
+	if (data->img->so)
+		free (data->img->so);
+	if (data->img->we)
+		free (data->img->we);
+	if (data->img->no)
+		free (data->img->no);
+	if (data->img->map)
+		free_2darray(data->img->map);
+	if (data->img->top)
+		free (data->img->top);
 	free (data->img);
 	free (data);
 }

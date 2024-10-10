@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 13:16:29 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/10/09 16:06:37 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/10/10 16:32:04 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,21 @@
 
 void	fill_coord_struct_no(char *coordStr, t_data *data)
 {
-	while (*coordStr != '.')
+	if (data->img->no)
+	{
+		data->dup_flag = 1;
+		return ;
+	}
+	while (*coordStr != '\0' && *coordStr != '.')
 	{
 		if (*coordStr == '\0')
 			return ;
 		coordStr++;
 	}
-	data->img->no = ft_strdup(coordStr);
+	if (*coordStr == '\0')
+		data->img->no = ft_strdup("");
+	else
+		data->img->no = ft_strdup(coordStr);
 	if (!data->img->no)
 	{
 		//free stuff here;
@@ -29,12 +37,19 @@ void	fill_coord_struct_no(char *coordStr, t_data *data)
 
 void	fill_coord_struct_so(char *coordStr, t_data *data)
 {
-	while (*coordStr != '.')
+	if (data->img->so)
+	{
+		data->dup_flag = 1;
+		return ;
+	}
+	while (*coordStr != '\0' && *coordStr != '.')
 	{
 		if (*coordStr == '\0')
 			return ;
 		coordStr++;
 	}
+	if (*coordStr == '\0')
+		data->img->so = ft_strdup("");
 	data->img->so = ft_strdup(coordStr);
 	if (!data->img->so)
 	{
@@ -44,12 +59,19 @@ void	fill_coord_struct_so(char *coordStr, t_data *data)
 
 void	fill_coord_struct_we(char *coordStr, t_data *data)
 {
-	while (*coordStr != '.')
+	if (data->img->we)
+	{
+		data->dup_flag = 1;
+		return ;
+	}
+	while (*coordStr != '\0' && *coordStr != '.')
 	{
 		if (*coordStr == '\0')
 			return ;
 		coordStr++;
 	}
+	if (*coordStr == '\0')
+		data->img->we = ft_strdup("");
 	data->img->we = ft_strdup(coordStr);
 	if (!data->img->we)
 	{
@@ -59,12 +81,19 @@ void	fill_coord_struct_we(char *coordStr, t_data *data)
 
 void	fill_coord_struct_ea(char *coordStr, t_data *data)
 {
-	while (*coordStr != '.')
+	if (data->img->ea)
+	{
+		data->dup_flag = 1;
+		return ;
+	}
+	while (*coordStr != '\0' && *coordStr != '.')
 	{
 		if (*coordStr == '\0')
 			return ;
 		coordStr++;
 	}
+	if (*coordStr == '\0')
+		data->img->ea = ft_strdup("");
 	data->img->ea = ft_strdup(coordStr);
 	if (!data->img->ea)
 	{
