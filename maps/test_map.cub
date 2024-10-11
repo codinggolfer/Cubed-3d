@@ -1,17 +1,18 @@
 
 
 
-NO                        ./path_to_the_north_texture
+NO                        ./textures/spiderman.png
 
-C                            225,30,0            
+C                            255,30,0            
 
-SO         ./path_to_the_south_texture
+SO         ./textures/bart.png
 
-WE                             ./path_to_the_west_texture
+WE                             ./textures/spiderman.png
 
-F                                   220,100,0                
+F                                   24,100,1                
 
-EA                                      ./path_to_the_east_texture
+EA                                      ./textures/bart.png
+
 
 
 1111111111111111111111111				11111111111
@@ -27,4 +28,4 @@ EA                                      ./path_to_the_east_texture
 10000000000000001101010010001
 11000001110101011111011110N0111
 11110111 11101011 11110100011
-11111111 11111111 11111111111
+11111111 11111111 111111111

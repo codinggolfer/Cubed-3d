@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 12:44:02 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/10/10 16:21:55 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/10/11 14:30:15 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	find_coordinates(int fd, t_data *data)
 		else if (line)
 			line = append_line(line, temp);
 		if (!line)
-			ft_error("Error: malloc failure in strdup or strjoin");
+			ft_error("Error\n malloc failure in strdup or strjoin");
 		free(temp);
 	}
 	fill_coordinates(ft_split(line, '\n'), data);

@@ -8,6 +8,7 @@ FILES	=	main.c \
 			map_coordinates/map_and_coordinates.c  \
 			find_map/find_and_fill_map.c \
 			map_coordinates/coordinate_validation.c \
+			parse/validate_map.c
 
 
 LIBFT	=	libft/libft.a

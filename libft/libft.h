@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 14:23:37 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/10/08 12:15:03 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/10/11 12:50:18 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,7 @@ int		address_printer(uintptr_t i);
 int		hex_printer(const char format, unsigned int i);
 char	*get_next_line(int fd);
 char	*append_line(char *lines, char *ret);
+int		ft_strcmp(char *s1, char *s2);
+long	ft_atol(const char *str);
 
 #endif

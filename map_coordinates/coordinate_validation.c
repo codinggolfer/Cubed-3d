@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 15:46:53 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/10/10 16:14:59 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/10/11 13:01:32 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,29 @@ int	try_to_open(t_data *data)
 	if (!open_check(data->img->we))
 		return (0);
 	return (1);
+}
+
+int	check_values(char **num_arr)
+{
+	int	i;
+	int	j;
+	
+	j = 0;
+	i = 0;
+	while (num_arr[i])
+	{
+		while (num_arr[i][j])
+		{
+			if (!ft_isdigit(num_arr[i][j]))
+				return (1);
+			if (j > 4)
+				return (1);
+			j++;
+		}
+		j = 0;
+		if (ft_atol(num_arr[i]) > 255)
+			return (1);
+		i++;
+	}
+	return (0);
 }
