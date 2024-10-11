@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 14:03:16 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/10/11 16:44:23 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/10/11 16:47:31 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ int	top_bottom_border(char *border)
 int	check_surround(char *top, char *bottom, int i)
 {
 	if (!top[i] || !bottom[i])
+		return (0);
+	if (top[i] == '\n' || bottom[i] == '\n')
 		return (0);
 	if (top[i] != '0' && top[i] != '1'
 		&& !ft_strchr("NSEW", top[i]))

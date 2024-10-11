@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 13:25:36 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/10/11 15:00:31 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/10/11 17:01:54 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,11 @@ void	parse_map(t_data *data)
 	{
 		free_structs(data);
 		ft_error("Error\nempty map");
+	}
+	if (data->nl_flag == 1)
+	{
+		free_structs(data);
+		ft_error("Error\ninvalid map: unneed newlines");
 	}
 	flag = validate_map(data->img->map);
 	if (flag)

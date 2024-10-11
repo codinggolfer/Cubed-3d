@@ -6,11 +6,24 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 12:27:00 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/10/10 13:52:03 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/10/11 17:01:32 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+
+void	check_nl(char *str, t_data *data)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == '\n' && str[i + 1] == '\n')
+			data->nl_flag = 1;
+		i++;
+	}
+}
 
 void find_map(int fd, t_data *data)
 {
@@ -32,6 +45,7 @@ void find_map(int fd, t_data *data)
 			ft_error("Error: malloc failure in strdup or strjoin");
 		free(temp);
 	}
+	check_nl(line, data);
 	data->img->map = ft_split(line, '\n');
 	free (line);
 }

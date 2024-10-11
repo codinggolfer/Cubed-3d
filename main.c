@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 12:12:30 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/10/10 16:27:19 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/10/11 17:02:18 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	init_struct(t_data *data)
 	data->img->top = NULL;
 	data->img->we = NULL;
 	data->dup_flag = 0;
+	data->nl_flag = 0;
 }
 
 int main(int ac, char **av)
