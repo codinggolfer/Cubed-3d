@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 14:03:16 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/10/16 13:59:05 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/10/16 16:22:04 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	top_bottom_border(char *border)
 }
 int	check_surround(char *top, char *bottom, int i)
 {
-	if (!top[i] || !bottom[i])
+	if (ft_strlen(top) < i || ft_strlen(bottom) < i)
 		return (0);
 	if (top[i] == '\n' || bottom[i] == '\n')
 		return (0);
@@ -74,12 +74,13 @@ int	inside_map(char *line, char *top, char *bottom)
 			if (!check_next(line, i))
 				return (2);
 		}
+		else if (line[i] != '1' && line[i] != '\t' && line[i] != ' ')
+			return (3);
 		i++;
 	}
 	if (line[i - 1] == '0')
 		return (2);
-	return (0);
-	
+	return (0);	
 }
 
 int	validate_map(char **map)
@@ -97,8 +98,10 @@ int	validate_map(char **map)
 	while (i <= len - 1)
 	{
 		flag = inside_map(map[i], map[i - 1], map[i + 1]);
-		if (flag)
+		if (flag == 2)
 			return (2);
+		if (flag == 3)
+			return (3);
 		i++;
 	}
 	flag = top_bottom_border(map[len]);

@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 13:25:36 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/10/16 14:00:12 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/10/16 14:16:51 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ void	parse_map(t_data *data)
 		if (flag == 2)
 			ft_error("Error\ninvalid map: map borders open");
 		if (flag == 3)
-			ft_error("Error\ninvalid map: more than one character");
+			ft_error("Error\ninvalid map: incorrect value");
 			
 	}
 }
