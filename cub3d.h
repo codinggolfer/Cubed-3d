@@ -79,6 +79,8 @@ typedef struct s_data
 {
 	t_img	*img;
 	int		dup_flag;
+	int		nl_flag;
+	int		dup_char;
 }	t_data;
 
 //initializing structs
@@ -101,9 +103,11 @@ void	fill_floor_struct(char *floor, t_data *data);
 //coordinate error wrapper validation functions
 int		is_empty_coord(t_data *data);
 int		try_to_open(t_data *data);
+int		check_values(char **num_arr);
 
 //map functions
-void find_map(int fd, t_data *data);
+void	find_map(int fd, t_data *data);
+int		validate_map(char **map);
 
 //game setup 
 void ray_casting(t_game *game);

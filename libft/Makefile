@@ -37,7 +37,9 @@ FILES = ft_atoi.c \
 		print_unint.c \
 		address_printer.c \
 		hex_printer.c \
-		get_next_line.c 
+		get_next_line.c \
+		ft_strcmp.c \
+		ft_atol.c 
 		
 FtoO    =    $(FILES:.c=.o)
 
