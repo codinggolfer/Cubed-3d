@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 14:03:16 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/10/11 16:47:31 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/10/16 13:59:05 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	top_bottom_border(char *border)
 	int	i;
 
 	i = 1;
+	while (border[i] == '\t' || border[i] == ' ')
+		i++;
 	if (border[0] != '1' && border[ft_strlen(border) - 1] != '1')
 		return (1);
 	while (border[i] != '\0')
@@ -42,11 +44,26 @@ int	check_surround(char *top, char *bottom, int i)
 	return (1);
 }
 
+int	check_next(char *line, int i)
+{
+	if (line[i + 1] && (line[i] == '0' || ft_strchr("NSEW", line[i]))
+		&& (line[i + 1] == ' '|| line[i + 1] == '\t'))
+		return (0);
+	if (line[i - 1] && line[i] == '0' && (line[i - 1] == ' '
+		|| line[i - 1] == '\t'))
+		return (0);
+	return (1);
+}
+
 int	inside_map(char *line, char *top, char *bottom)
 {
 	int	i;
 	
 	i = 0;
+	while (line[i] == '\t' || line[i] == ' ')
+		i++;
+	if (line[i] == '0')
+		return (2);
 	while (line[i])
 	{
 		if (line[i] == '0' || line[i] == 'N' || line[i] == 'S'
@@ -54,9 +71,13 @@ int	inside_map(char *line, char *top, char *bottom)
 		{
 			if (!check_surround(top, bottom, i))
 				return (2);
+			if (!check_next(line, i))
+				return (2);
 		}
 		i++;
 	}
+	if (line[i - 1] == '0')
+		return (2);
 	return (0);
 	
 }

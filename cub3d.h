@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 13:07:01 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/10/11 16:52:04 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/10/16 12:07:50 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct s_data
 	t_img	*img;
 	int		dup_flag;
 	int		nl_flag;
+	int		dup_char;
 }	t_data;
 
 //map parser here

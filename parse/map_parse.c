@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 13:25:36 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/10/11 17:01:54 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/10/16 14:00:12 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 
 void	parse_coordinates(t_data *data)
 {
+	if (data->dup_char != 1)
+	{
+		free_structs(data);
+		ft_error("Error\ninvalid amount of characters");
+	}
 	if (data->dup_flag == 1)
 	{
 		free_structs(data);
@@ -109,6 +114,9 @@ void	parse_map(t_data *data)
 			ft_error("Error\ninvalid map: invalid borders");
 		if (flag == 2)
 			ft_error("Error\ninvalid map: map borders open");
+		if (flag == 3)
+			ft_error("Error\ninvalid map: more than one character");
+			
 	}
 }
 

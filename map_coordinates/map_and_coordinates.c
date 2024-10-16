@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 12:44:02 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/10/11 14:30:15 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/10/16 12:32:39 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,27 +39,27 @@ static void	fill_coordinates(char **coordArr, t_data *data)
 void	find_coordinates(int fd, t_data *data)
 {
 	char 	*line;
-	char 	*temp;
+	char 	*t;
 
 	line = NULL;
 	while (1)
 	{
-		temp = get_next_line(fd);
-		if (temp && ft_isdigit(temp[0]))
+		t = get_next_line(fd);
+		if (t && (ft_isdigit(t[0]) || t[0] == '\t' || t[0] == ' '))
 		{
-			data->img->top = ft_strdup(temp);
-			free(temp);
+			data->img->top = ft_strdup(t);
+			free(t);
 			break ;
 		}
-		if (temp == NULL)
+		if (t == NULL)
 			break ;
 		if (!line)
-			line = ft_strdup(temp);
+			line = ft_strdup(t);
 		else if (line)
-			line = append_line(line, temp);
+			line = append_line(line, t);
 		if (!line)
 			ft_error("Error\n malloc failure in strdup or strjoin");
-		free(temp);
+		free(t);
 	}
 	fill_coordinates(ft_split(line, '\n'), data);
 	free (line);

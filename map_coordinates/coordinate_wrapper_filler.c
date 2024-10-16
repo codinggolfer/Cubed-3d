@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 13:16:29 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/10/10 16:32:04 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/10/16 11:31:59 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,7 @@ void	fill_coord_struct_no(char *coordStr, t_data *data)
 	else
 		data->img->no = ft_strdup(coordStr);
 	if (!data->img->no)
-	{
-		//free stuff here;
-	}
+		return ;
 }
 
 void	fill_coord_struct_so(char *coordStr, t_data *data)
@@ -52,9 +50,7 @@ void	fill_coord_struct_so(char *coordStr, t_data *data)
 		data->img->so = ft_strdup("");
 	data->img->so = ft_strdup(coordStr);
 	if (!data->img->so)
-	{
-		//free stuff here;
-	}
+		return ;
 }
 
 void	fill_coord_struct_we(char *coordStr, t_data *data)
@@ -74,9 +70,7 @@ void	fill_coord_struct_we(char *coordStr, t_data *data)
 		data->img->we = ft_strdup("");
 	data->img->we = ft_strdup(coordStr);
 	if (!data->img->we)
-	{
-		//free stuff here;
-	}
+		return ;
 }
 
 void	fill_coord_struct_ea(char *coordStr, t_data *data)
@@ -96,7 +90,5 @@ void	fill_coord_struct_ea(char *coordStr, t_data *data)
 		data->img->ea = ft_strdup("");
 	data->img->ea = ft_strdup(coordStr);
 	if (!data->img->ea)
-	{
-		//free stuff here;
-	}
+		return ;
 }

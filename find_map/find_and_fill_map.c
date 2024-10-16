@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 12:27:00 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/10/11 17:01:32 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/10/16 12:31:04 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ void	check_nl(char *str, t_data *data)
 	{
 		if (str[i] == '\n' && str[i + 1] == '\n')
 			data->nl_flag = 1;
+		if (str[i] == 'N' || str[i] == 'S'
+			|| str[i] == 'E' || str[i] == 'W')
+			data->dup_char++;
 		i++;
 	}
 }
