@@ -3,23 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aneitenb <aneitenb@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 12:12:30 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/10/16 15:57:20 by aneitenb         ###   ########.fr       */
+/*   Updated: 2024/10/16 17:02:34 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void game_loop(void* param)
-{
-    t_game* game = (t_game*)param;
+// void game_loop(void* param)
+// {
+//     t_game* game = (t_game*)param;
     
-    ray_casting(game);
-    //handle_input(game);
-    //-->actions to key presses, move player, roatate player
-}
+//     ray_casting(game);
+//     //handle_input(game);
+//     //-->actions to key presses, move player, roatate player
+// }
 
 int main(int ac, char **av)
 {
@@ -35,15 +35,6 @@ int main(int ac, char **av)
 	if (ac != 3)
 	{
 		check_map(av[1], data);
-		
-		// printf("%s\n", data->img->no);
-		// printf("%s\n", data->img->ea);
-		// printf("%s\n", data->img->we);
-		// printf("%s\n", data->img->so);
-		// printf("ceiling: %s\n", data->img->ceiling);
-		// printf("floor: %s\n", data->img->floor);
-		// for (int i = 0; data->img->map[i] != NULL; i++)
-		// 	printf("%s\n", data->img->map[i]);
 		//init_game(); //TOOD
 		//run_game(); // TODO
 		//free_stuff(); //TODO

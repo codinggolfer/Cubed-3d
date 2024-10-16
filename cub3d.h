@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aneitenb <aneitenb@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 13:07:01 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/10/16 16:00:08 by aneitenb         ###   ########.fr       */
+/*   Updated: 2024/10/16 16:54:32 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,13 +110,16 @@ void	find_map(int fd, t_data *data);
 int		validate_map(char **map);
 
 //game setup 
-void ray_casting(t_game *game);
+//void ray_casting(t_game *game);
 
 //free functions here
 void	ft_error(char *msg);
 int		count_arg_array(char **array);
 void	free_2darray(char **array);
 void	free_structs(t_data *data);
+
+//utils
+void	init_data(t_data *data);
 
 
 
