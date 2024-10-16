@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aneitenb <aneitenb@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 11:39:07 by aneitenb          #+#    #+#             */
-/*   Updated: 2024/10/16 15:02:06 by aneitenb         ###   ########.fr       */
+/*   Updated: 2024/10/16 16:53:59 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void find_player_start(t_game *game, t_data *data);
-void set_initial_direction(t_player *player, char direction);
+// void find_player_start(t_game *game, t_data *data);
+// void set_initial_direction(t_player *player, char direction);
 
 void	init_data(t_data *data)
 {
@@ -26,6 +26,8 @@ void	init_data(t_data *data)
 	data->img->top = NULL;
 	data->img->we = NULL;
 	data->dup_flag = 0;
+	data->dup_char = 0;
+	data->nl_flag = 0;
 }
 
 void	init_game(t_game *game, t_data *data)
@@ -33,11 +35,9 @@ void	init_game(t_game *game, t_data *data)
 	game->mlx = mlx_init(SCREEN_WIDTH, SCREEN_HEIGHT, "cub3D", false);
 	if (!game->mlx)
 		ft_error("Failed to initialize MLX");
-
 	game->img = mlx_new_image(game->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
 	if (!game->img || mlx_image_to_window(game->mlx, game->img, 0, 0) == -1)
 		ft_error("Failed to create or display image");
-
 	find_player_start(game, data);
 	game->map = data->img->map;
 }
