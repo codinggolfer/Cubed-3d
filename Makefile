@@ -10,7 +10,7 @@ FILES	=	main.c \
 			map_coordinates/coordinate_validation.c \
 			parse/validate_map.c \
 			init.c \
-			#ray_casting.c
+			ray_casting.c
 
 
 LIBFT	=	libft/libft.a
