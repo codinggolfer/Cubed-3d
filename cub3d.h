@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: aneitenb <aneitenb@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 13:07:01 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/10/17 13:04:53 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/10/17 17:08:00 by aneitenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,27 +25,27 @@
 # include <stdio.h> //remove if needed
 
 typedef struct s_player {
-	double	posX;
-	double	posY;
-	double	dirX;
-	double	dirY;
-	double	planeX;
-	double	planeY;
+	double	pos_x;
+	double	pos_y;
+	double	dir_x;
+	double	dir_y;
+	double	plane_x;
+	double	plane_y;
 } t_player;
 
 typedef struct s_ray {
-	double 	cameraX;
-	double 	rayDirX;
-	double	rayDirY;
-	int 	mapX;
-	int		mapY;
-	double 	sideDistX;
-	double	sideDistY;
-	double 	deltaDistX;
-	double	deltaDistY;
-	double 	perpWallDist;
-	int 	stepX;
-	int		stepY;
+	double 	camera_x;
+	double 	ray_dir_x;
+	double	ray_dir_y;
+	int 	map_x;
+	int		map_y;
+	double 	side_dist_x;
+	double	side_dist_y;
+	double 	delta_dist_x;
+	double	delta_dist_y;
+	double 	perp_wall_dist;
+	int 	step_x;
+	int		step_y;
 	int 	hit;
 	int 	side;
 } t_ray;
@@ -110,7 +110,8 @@ void	find_map(int fd, t_data *data);
 int		validate_map(char **map);
 
 //game setup 
-void ray_casting(t_game *game);
+void 	ray_casting(t_game *game);
+void	run_game(t_game *game);
 
 //free functions here
 void	ft_error(char *msg);

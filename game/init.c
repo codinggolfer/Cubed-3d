@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: aneitenb <aneitenb@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 11:39:07 by aneitenb          #+#    #+#             */
-/*   Updated: 2024/10/17 13:21:39 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/10/17 17:27:30 by aneitenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-// void find_player_start(t_game *game, t_data *data);
-// void set_initial_direction(t_player *player, char direction);
+void find_player_start(t_game *game, t_data *data);
+void set_initial_direction(t_player *player, char direction);
 
 
 
@@ -27,27 +27,28 @@ void	init_game(t_game *game, t_data *data)
 		ft_error("Failed to create or display image");
 	find_player_start(game, data);
 	game->map = data->img->map;
+	 printf("Map initialized. First few characters: %.10s\n", game->map[0]);
 }
 
 void	init_ray(t_ray *ray, t_player *player, int x)
 {
-	ray->cameraX = 2 * x / (double)SCREEN_WIDTH - 1;
-	ray->rayDirX = player->dirX + player->planeX * ray->cameraX;
-	ray->rayDirY = player->dirY + player->planeY * ray->cameraX;
-	ray->mapX = (int)player->posX;
-	ray->mapY = (int)player->posY;
-	ray->deltaDistX = fabs(1 / ray->rayDirX);
-	ray->deltaDistY = fabs(1 / ray->rayDirY);
+	ray->camera_x = 2 * x / (double)SCREEN_WIDTH - 1;
+	ray->ray_dir_x = player->dir_x + player->plane_x * ray->camera_x;
+	ray->ray_dir_y = player->dir_y + player->plane_y * ray->camera_x;
+	ray->map_x = (int)player->pos_x;
+	ray->map_y = (int)player->pos_y;
+	ray->delta_dist_x = fabs(1 / ray->ray_dir_x);
+	ray->delta_dist_y = fabs(1 / ray->ray_dir_y);
 	ray->hit = 0;
 }
 
 int	position_direction_wrapper(t_game *game, int x, int y, char c)
 {
-	game->player.posX = x + 0.5;
-	game->player.posY = y + 0.5;
+	game->player.pos_x = x + 0.5;
+	game->player.pos_y = y + 0.5;
 	set_initial_direction(&game->player, c);
 	game->map[y][x] = '0';
-	return;
+	return (1);	//
 }
 
 /*
@@ -93,23 +94,23 @@ void set_initial_direction(t_player *player, char direction)
 {
 	if (direction == 'N')
 	{
-		player->dirX = 0; player->dirY = -1;
-		player->planeX = 0.66; player->planeY = 0;
+		player->dir_x = 0; player->dir_y = -1;
+		player->plane_x = 0.66; player->plane_y = 0;
 	}
 	else if (direction == 'S')
 	{
-		player->dirX = 0; player->dirY = 1;
-		player->planeX = -0.66; player->planeY = 0;
+		player->dir_x = 0; player->dir_y = 1;
+		player->plane_x = -0.66; player->plane_y = 0;
 	}
 	else if (direction == 'E')
 	{
-		player->dirX = 1; player->dirY = 0;
-		player->planeX = 0; player->planeY = 0.66;
+		player->dir_x = 1; player->dir_y = 0;
+		player->plane_x = 0; player->plane_y = 0.66;
 	}
 	else if (direction == 'W')
 	{
-		player->dirX = -1; player->dirY = 0;
-		player->planeX = 0; player->planeY = -0.66;
+		player->dir_x = -1; player->dir_y = 0;
+		player->plane_x = 0; player->plane_y = -0.66;
 	}
 }
 

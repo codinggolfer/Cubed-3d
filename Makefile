@@ -9,8 +9,9 @@ FILES	=	main.c \
 			find_map/find_and_fill_map.c \
 			map_coordinates/coordinate_validation.c \
 			parse/validate_map.c \
-			init.c \
-			ray_casting.c
+			game/init.c \
+			game/ray_casting.c \
+			game/run.c
 
 
 LIBFT	=	libft/libft.a
