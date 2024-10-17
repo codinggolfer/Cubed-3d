@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 12:12:30 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/10/16 17:02:34 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/10/17 13:04:05 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,21 @@
 //     //handle_input(game);
 //     //-->actions to key presses, move player, roatate player
 // }
+
+void	init_data(t_data *data)
+{
+	data->img->ceiling = NULL;
+	data->img->ea = NULL;
+	data->img->floor = NULL;
+	data->img->map = NULL;
+	data->img->no = NULL;
+	data->img->so = NULL;
+	data->img->top = NULL;
+	data->img->we = NULL;
+	data->dup_flag = 0;
+	data->dup_char = 0;
+	data->nl_flag = 0;
+}
 
 int main(int ac, char **av)
 {
@@ -35,15 +50,14 @@ int main(int ac, char **av)
 	if (ac != 3)
 	{
 		check_map(av[1], data);
-		//init_game(); //TOOD
-		//run_game(); // TODO
+		init_game(game, data);
+		run_game(game); // TODO
 		//free_stuff(); //TODO
 	}
 	else
 		ft_printf ("%s\n", "invalid amount of arguments");
-	init_game(game, data);
-	mlx_loop_hook(game.mlx, &game_loop, &game);
-	mlx_loop(game.mlx);
+	// mlx_loop_hook(game.mlx, &game_loop, &game);
+	// mlx_loop(game.mlx);
 	free_structs(data);	//add game struct frees
 	exit (0);
 }
