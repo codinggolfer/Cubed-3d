@@ -15,8 +15,6 @@
 void find_player_start(t_game *game, t_data *data);
 void set_initial_direction(t_player *player, char direction);
 
-
-
 void	init_game(t_game *game, t_data *data)
 {
 	game->mlx = mlx_init(SCREEN_WIDTH, SCREEN_HEIGHT, "cub3D", false);
