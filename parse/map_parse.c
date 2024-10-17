@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_parse.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: aneitenb <aneitenb@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 13:25:36 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/10/16 14:16:51 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/10/17 17:18:26 by aneitenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ void	parse_floor(t_data *data)
 		ft_error("Error\nincorrect floor values");
 	}
 }
+
 void	parse_map(t_data *data)
 {
 	int	flag;

@@ -3,23 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: aneitenb <aneitenb@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 12:12:30 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/10/17 13:04:05 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/10/17 17:20:14 by aneitenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-// void game_loop(void* param)
-// {
-//     t_game* game = (t_game*)param;
-    
-//     ray_casting(game);
-//     //handle_input(game);
-//     //-->actions to key presses, move player, roatate player
-// }
 
 void	init_data(t_data *data)
 {
@@ -47,7 +38,7 @@ int main(int ac, char **av)
 	data->img = malloc(sizeof(t_img));
 	init_data(data);
 	game = malloc(sizeof(t_game));
-	if (ac != 3)
+	if (ac == 2)
 	{
 		check_map(av[1], data);
 		init_game(game, data);
@@ -56,8 +47,6 @@ int main(int ac, char **av)
 	}
 	else
 		ft_printf ("%s\n", "invalid amount of arguments");
-	// mlx_loop_hook(game.mlx, &game_loop, &game);
-	// mlx_loop(game.mlx);
 	free_structs(data);	//add game struct frees
 	exit (0);
 }

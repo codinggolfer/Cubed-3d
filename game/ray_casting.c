@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ray_casting.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: aneitenb <aneitenb@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 14:14:45 by aneitenb          #+#    #+#             */
-/*   Updated: 2024/10/17 12:44:21 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/10/17 17:24:04 by aneitenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void    calculate_step(t_ray *ray, t_player *player)
+void	calculate_step(t_ray *ray, t_player *player)
 {
 	if (ray->ray_dir_x < 0)
 	{
@@ -76,6 +76,12 @@ void    calculate_wall(t_ray *ray, t_player *player, int *draw_start, int *draw_
 		*draw_end = SCREEN_HEIGHT - 1;
 }
 
+void draw_vertical_line(mlx_image_t *img, int x, int start, int end, uint32_t color)
+{
+	for (int y = start; y < end; y++)
+		mlx_put_pixel(img, x, y, color);
+}
+
 void    ray_casting(t_game *game)
 {
 	t_ray		ray;
@@ -99,3 +105,4 @@ void    ray_casting(t_game *game)
 		x++;
 	}
 }
+
