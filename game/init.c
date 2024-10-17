@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: aneitenb <aneitenb@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 11:39:07 by aneitenb          #+#    #+#             */
-/*   Updated: 2024/10/17 13:21:39 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/10/17 14:50:21 by aneitenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 // void find_player_start(t_game *game, t_data *data);
 // void set_initial_direction(t_player *player, char direction);
-
-
 
 void	init_game(t_game *game, t_data *data)
 {
