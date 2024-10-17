@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_casting.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aneitenb <aneitenb@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 14:14:45 by aneitenb          #+#    #+#             */
-/*   Updated: 2024/10/17 17:24:04 by aneitenb         ###   ########.fr       */
+/*   Updated: 2024/10/17 18:36:14 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	calculate_step(t_ray *ray, t_player *player)
 	}
 }
 
-void    perform_dda(t_ray *ray, char **map)
+void    perform_dda(t_ray *ray, t_game *game)
 {
 	while (ray->hit == 0)
 	{
@@ -52,7 +52,7 @@ void    perform_dda(t_ray *ray, char **map)
 			ray->map_y += ray->step_y;
 			ray->side = 1;
 		}
-		if (map[ray->map_y][ray->map_x] == '1')
+		if (game->map[ray->map_y][ray->map_x] == '1')
 			ray->hit = 1;
 	}
 }
@@ -95,7 +95,7 @@ void    ray_casting(t_game *game)
 	{
 		init_ray(&ray, &game->player, x);
 		calculate_step(&ray, &game->player);
-		perform_dda(&ray, game->map);
+		perform_dda(&ray, game);
 		calculate_wall(&ray, &game->player, &draw_start, &draw_end);
 		if (ray.side == 1)
 			color = 0xFF0000FF;  // Red if side is 1

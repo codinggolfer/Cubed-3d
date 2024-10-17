@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aneitenb <aneitenb@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 11:39:07 by aneitenb          #+#    #+#             */
-/*   Updated: 2024/10/17 17:27:30 by aneitenb         ###   ########.fr       */
+/*   Updated: 2024/10/17 17:50:17 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ void	init_game(t_game *game, t_data *data)
 	game->img = mlx_new_image(game->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
 	if (!game->img || mlx_image_to_window(game->mlx, game->img, 0, 0) == -1)
 		ft_error("Failed to create or display image");
-	find_player_start(game, data);
 	game->map = data->img->map;
-	 printf("Map initialized. First few characters: %.10s\n", game->map[0]);
+	find_player_start(game, data);
+	printf("Map initialized. First few characters: %.10s\n", game->map[0]);
 }
 
 void	init_ray(t_ray *ray, t_player *player, int x)
@@ -44,9 +44,9 @@ int	position_direction_wrapper(t_game *game, int x, int y, char c)
 {
 	game->player.pos_x = x + 0.5;
 	game->player.pos_y = y + 0.5;
-	set_initial_direction(&game->player, c);
 	game->map[y][x] = '0';
-	return (1);	//
+	set_initial_direction(&game->player, c);
+	return (1);
 }
 
 /*
@@ -88,30 +88,46 @@ from -1 to 1 across the screen width. This value is multiplied by the plane
 vector to get the ray direction. So .66 creates an FOV of about 66 degrees, 
 which is close to a realistic human field of view for a computer screen
 */
+void	set_initial_direction2(t_player *player, char direction)
+{
+	if (direction == 'E')
+	{
+		player->dir_x = 1;
+		player->dir_y = 0;
+		player->plane_x = 0;
+		player->plane_y = 0.66;
+	}
+	else if (direction == 'W')
+	{
+		player->dir_x = -1;
+		player->dir_y = 0;
+		player->plane_x = 0;
+		player->plane_y = -0.66;
+	}
+}
+
+
 void set_initial_direction(t_player *player, char direction)
 {
 	if (direction == 'N')
 	{
-		player->dir_x = 0; player->dir_y = -1;
-		player->plane_x = 0.66; player->plane_y = 0;
+		player->dir_x = 0;
+		player->dir_y = -1;
+		player->plane_x = 0.66;
+		player->plane_y = 0;
 	}
 	else if (direction == 'S')
 	{
-		player->dir_x = 0; player->dir_y = 1;
-		player->plane_x = -0.66; player->plane_y = 0;
+		player->dir_x = 0;
+		player->dir_y = 1;
+		player->plane_x = -0.66;
+		player->plane_y = 0;
 	}
 	else if (direction == 'E')
-	{
-		player->dir_x = 1; player->dir_y = 0;
-		player->plane_x = 0; player->plane_y = 0.66;
-	}
+		set_initial_direction2(player, direction);
 	else if (direction == 'W')
-	{
-		player->dir_x = -1; player->dir_y = 0;
-		player->plane_x = 0; player->plane_y = -0.66;
-	}
+		set_initial_direction2(player, direction);
 }
-
 
 
 //STORAGE FOR OLD STUFF:
