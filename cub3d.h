@@ -6,17 +6,12 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 13:07:01 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/10/18 13:31:28 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/10/18 15:45:42 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 #define CUB3D_H
-#define SCREEN_WIDTH 640
-#define SCREEN_HEIGHT 480
-#define FOV 60
-#define MOVE_SPEED 0.05
-#define ROTATE_SPEED 0.03
 
 # include "./libft/libft.h"
 # include <math.h>
@@ -24,6 +19,11 @@
 # include <fcntl.h>
 # include <stdio.h> //remove if needed
 
+# define SCREEN_WIDTH 640
+# define SCREEN_HEIGHT 480
+# define FOV 60
+# define MOVE_SPEED 0.05
+# define ROTATE_SPEED 0.03
 
 typedef enum e_key
 {
@@ -135,6 +135,14 @@ void	ft_error(char *msg);
 int		count_arg_array(char **array);
 void	free_2darray(char **array);
 void	free_structs(t_data *data);
+
+//move
+void	move_up(t_game *game, t_player *p);
+void	move_down(t_game *game, t_player *p);
+void	rot_right(t_player *p);
+void	rot_left(t_player *p);
+void	strife_left(t_game *game, t_player *p);
+void	strife_right(t_game *game, t_player *p);
 
 //utils
 //void	init_data(t_data *data); lets keep this in front page with main so there is space for wrapper function in init.c

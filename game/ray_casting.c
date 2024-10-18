@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 14:14:45 by aneitenb          #+#    #+#             */
-/*   Updated: 2024/10/18 13:58:20 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/10/18 17:59:15 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	calculate_step(t_ray *ray, t_player *player)
 
 void    perform_dda(t_ray *ray, char **map)
 {
+	//printf("y value: %i & x value: %i\n", ray->map_y, ray->map_x);
 	while (ray->hit == 0)
 	{
 		if (ray->side_dist_x < ray->side_dist_y)
@@ -52,7 +53,13 @@ void    perform_dda(t_ray *ray, char **map)
 			ray->map_y += ray->step_y;
 			ray->side = 1;
 		}
-		if (map[ray->map_y][ray->map_x] == '1')
+		if (ray->map_x >= 1 && (size_t)ray->map_x < ft_strlen(map[0])
+			&& ray->map_y >= 1 && ray->map_y < count_arg_array(map) - 1)
+		{
+    		if (map[ray->map_y][ray->map_x] == '1')
+        	ray->hit = 1;
+		}
+		else
 			ray->hit = 1;
 	}
 }
@@ -91,6 +98,8 @@ void	draw_floor_ceiling(mlx_image_t *img, int x, int start, int end, t_game *gam
 {
 	int	y;
 
+	if (end < 0)
+		return ;
 	y = end;
 	while (y < SCREEN_HEIGHT)
 	{
@@ -124,8 +133,8 @@ void    ray_casting(t_game *game)
 			color = 0xFF0000FF;  // Red if side is 1
 		else
 			color = 0x00FF00FF;    // otherwise green
-		draw_floor_ceiling(game->img, x, draw_start, draw_end, game);
 		draw_vertical_line(game->img, x, draw_start, draw_end, color);
+		draw_floor_ceiling(game->img, x, draw_start, draw_end, game);
 		x++;
 	}
 }
