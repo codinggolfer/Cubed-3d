@@ -11,7 +11,8 @@ FILES	=	main.c \
 			parse/validate_map.c \
 			game/init.c \
 			game/ray_casting.c \
-			game/run.c
+			game/run.c \
+			game/handle_input.c
 
 
 LIBFT	=	libft/libft.a

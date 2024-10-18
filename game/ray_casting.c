@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 14:14:45 by aneitenb          #+#    #+#             */
-/*   Updated: 2024/10/17 18:36:14 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/10/18 13:58:20 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	calculate_step(t_ray *ray, t_player *player)
 	}
 }
 
-void    perform_dda(t_ray *ray, t_game *game)
+void    perform_dda(t_ray *ray, char **map)
 {
 	while (ray->hit == 0)
 	{
@@ -52,7 +52,7 @@ void    perform_dda(t_ray *ray, t_game *game)
 			ray->map_y += ray->step_y;
 			ray->side = 1;
 		}
-		if (game->map[ray->map_y][ray->map_x] == '1')
+		if (map[ray->map_y][ray->map_x] == '1')
 			ray->hit = 1;
 	}
 }
@@ -76,10 +76,33 @@ void    calculate_wall(t_ray *ray, t_player *player, int *draw_start, int *draw_
 		*draw_end = SCREEN_HEIGHT - 1;
 }
 
-void draw_vertical_line(mlx_image_t *img, int x, int start, int end, uint32_t color)
+void	draw_vertical_line(mlx_image_t *img, int x, int start, int end, uint32_t color)
 {
-	for (int y = start; y < end; y++)
+	int	y;
+
+	y = start;
+	while (y < end)
+	{
 		mlx_put_pixel(img, x, y, color);
+		y++;
+	}
+}
+void	draw_floor_ceiling(mlx_image_t *img, int x, int start, int end, t_game *game)
+{
+	int	y;
+
+	y = end;
+	while (y < SCREEN_HEIGHT)
+	{
+		mlx_put_pixel(img, x, y, game->floor_colour);
+		y++;
+	}
+	y = 0;
+	while (y < start)
+	{
+		mlx_put_pixel(img, x, y, game->ceiling_colour);
+		y++;
+	}
 }
 
 void    ray_casting(t_game *game)
@@ -95,12 +118,13 @@ void    ray_casting(t_game *game)
 	{
 		init_ray(&ray, &game->player, x);
 		calculate_step(&ray, &game->player);
-		perform_dda(&ray, game);
+		perform_dda(&ray, game->map);
 		calculate_wall(&ray, &game->player, &draw_start, &draw_end);
 		if (ray.side == 1)
 			color = 0xFF0000FF;  // Red if side is 1
 		else
 			color = 0x00FF00FF;    // otherwise green
+		draw_floor_ceiling(game->img, x, draw_start, draw_end, game);
 		draw_vertical_line(game->img, x, draw_start, draw_end, color);
 		x++;
 	}

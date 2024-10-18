@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aneitenb <aneitenb@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 13:07:01 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/10/17 17:08:00 by aneitenb         ###   ########.fr       */
+/*   Updated: 2024/10/18 13:31:28 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,18 @@
 # include "MLX42/include/MLX42/MLX42.h"
 # include <fcntl.h>
 # include <stdio.h> //remove if needed
+
+
+typedef enum e_key
+{
+	RIGHT,
+	LEFT,
+	FORWARD,
+	DOWN,
+	S_LEFT,
+	S_RIGHT
+	
+} t_key;
 
 typedef struct s_player {
 	double	pos_x;
@@ -55,6 +67,10 @@ typedef struct s_game {
 	mlx_image_t *img;
 	t_player 	player;
 	char 		**map;
+	char		**floor_rgb;
+	char		**ceiling_rgb;
+	uint32_t	floor_colour;
+	uint32_t	ceiling_colour;
 } t_game;
 
 // struct s_mlx
@@ -112,6 +128,7 @@ int		validate_map(char **map);
 //game setup 
 void 	ray_casting(t_game *game);
 void	run_game(t_game *game);
+void	handle_input(t_game *game);
 
 //free functions here
 void	ft_error(char *msg);

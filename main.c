@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 12:12:30 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/10/17 18:32:42 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/10/18 12:25:54 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int main(int ac, char **av)
 	{
 		check_map(av[1], data);
 		init_game(game, data);
-		run_game(game); // TODO
+		run_game(game);
 		//free_stuff(); //TODO
 	}
 	else
