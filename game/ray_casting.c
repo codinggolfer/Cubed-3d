@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_casting.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aneitenb <aneitenb@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 14:14:45 by aneitenb          #+#    #+#             */
-/*   Updated: 2024/10/21 12:59:48 by aneitenb         ###   ########.fr       */
+/*   Updated: 2024/10/21 16:01:59 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ void	calculate_step(t_ray *ray, t_player *player)
 
 void    perform_dda(t_ray *ray, char **map)
 {
-	//printf("y value: %i & x value: %i\n", ray->map_y, ray->map_x);
 	while (ray->hit == 0)
 	{
 		if (ray->side_dist_x < ray->side_dist_y)
@@ -62,6 +61,13 @@ void    perform_dda(t_ray *ray, char **map)
 		else
 			ray->hit = 1;
 	}
+}
+int get_texture_index(char wall_type)
+{
+    if (wall_type == '1')
+        return 0;
+    else
+        return -1;
 }
 
 void    calculate_wall(t_ray *ray, t_player *player, int *draw_start, int *draw_end)
@@ -114,14 +120,54 @@ void	draw_floor_ceiling(mlx_image_t *img, int x, int start, int end, t_game *gam
 		y++;
 	}
 }
+void draw_textured_wall_slice(mlx_image_t *img, mlx_texture_t *texture, int x, int draw_start, int draw_end, t_ray *ray, t_player *player)
+{
+    int y;
+    int tex_x;
+    int tex_y;
+    int line_height;
+   	double wall_x;
+    double step;
+    double tex_pos;
+    uint32_t color;
+
+    // Calculate the exact x-coordinate on the texture (wall hit position)
+    if (ray->side == 0)
+        wall_x = player->pos_y + ray->perp_wall_dist * ray->ray_dir_y;
+    else
+        wall_x = player->pos_x + ray->perp_wall_dist * ray->ray_dir_x;
+    wall_x -= floor(wall_x);  // Get the fractional part of wall_x
+    // X-coordinate on the texture
+    tex_x = (int)(wall_x * (double)texture->width);
+    if ((ray->side == 0 && ray->ray_dir_x > 0) || (ray->side == 1 && ray->ray_dir_y < 0))
+        tex_x = texture->width - tex_x - 1;
+    // Calculate the step to move through the texture vertically
+    line_height = draw_end - draw_start;
+    step = (double)texture->height / line_height;
+    // Starting texture position
+    tex_pos = (draw_start - SCREEN_HEIGHT / 2 + line_height / 2) * step;
+    // Draw each pixel for the vertical line
+    y = draw_start;
+    while (y < draw_end)
+    {
+        tex_y = (int)tex_pos & (texture->height - 1);  // Get the Y coordinate on the texture
+        tex_pos += step;
+        // Get the color from the texture (RGBA format)
+        color = *(uint32_t *)(texture->pixels + (tex_y * texture->width + tex_x) * sizeof(uint32_t));
+        // Draw the pixel on the screen
+        mlx_put_pixel(img, x, y, color);
+        y++;
+    }
+}
 
 void    ray_casting(t_game *game)
 {
-	t_ray		ray;
-	int			draw_start;
-	int			draw_end;
-	int			x;
-	uint32_t	color;
+	t_ray			ray;
+	int				draw_start;
+	int				draw_end;
+	int				x;
+	uint32_t		color;
+	mlx_texture_t	*texture;
 
 	x = 0;
 	while (x < SCREEN_WIDTH)
@@ -130,12 +176,14 @@ void    ray_casting(t_game *game)
 		calculate_step(&ray, &game->player);
 		perform_dda(&ray, game->map);
 		calculate_wall(&ray, &game->player, &draw_start, &draw_end);
-		if (ray.side == 1)
-			color = 0xFF0000FF;  // Red if side is 1
-		else
-			color = 0x00FF00FF;    // otherwise green
+		// if (ray.side == 1)
+		// 	color = 0xFF0000FF;  // Red if side is 1
+		// else
+		// 	color = 0x00FF00FF;    // otherwise green
+		texture = game->no_txt;
+		draw_textured_wall_slice(game->img, texture, x, draw_start, draw_end, &ray, &game->player);
 		draw_floor_ceiling(game->img, x, draw_start, draw_end, game);
-		draw_vertical_line(game->img, x, draw_start, draw_end, color);
+		//draw_vertical_line(game->img, x, draw_start, draw_end, color);
 		x++;
 	}
 }
