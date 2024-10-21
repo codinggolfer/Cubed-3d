@@ -1,8 +1,8 @@
-NO                        ./textures/spiderman.png
+NO                        ./textures/north.png
 
 C                            155,100,255            
 
-SO         ./textures/bart.png
+SO         ./textures/south.png
 
 WE                             ./textures/spiderman.png
 

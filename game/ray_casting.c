@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_casting.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: aneitenb <aneitenb@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 14:14:45 by aneitenb          #+#    #+#             */
-/*   Updated: 2024/10/21 11:37:20 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/10/21 12:59:48 by aneitenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ void	draw_vertical_line(mlx_image_t *img, int x, int start, int end, uint32_t co
 		y++;
 	}
 }
+
 void	draw_floor_ceiling(mlx_image_t *img, int x, int start, int end, t_game *game)
 {
 	int	y;

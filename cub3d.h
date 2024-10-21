@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: aneitenb <aneitenb@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 13:07:01 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/10/18 15:45:42 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/10/21 13:45:29 by aneitenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,20 +63,23 @@ typedef struct s_ray {
 } t_ray;
 
 typedef struct s_game {
-	mlx_t 		*mlx;
-	mlx_image_t *img;
-	t_player 	player;
-	char 		**map;
-	char		**floor_rgb;
-	char		**ceiling_rgb;
-	uint32_t	floor_colour;
-	uint32_t	ceiling_colour;
+	mlx_t 			*mlx;
+	mlx_image_t 	*img;
+	t_player 		player;
+	char 			**map;
+	char			**floor_rgb;
+	char			**ceiling_rgb;
+	mlx_texture_t	*no_txt;
+	mlx_texture_t	*so_txt;
+	mlx_texture_t	*ea_txt;
+	mlx_texture_t	*we_txt;
+	mlx_image_t		*no_img;
+	mlx_image_t		*so_img;
+	mlx_image_t		*ea_img;
+	mlx_image_t		*we_img;
+	uint32_t		floor_colour;
+	uint32_t		ceiling_colour;
 } t_game;
-
-// struct s_mlx
-// {
-	
-// } mlx_t;
 
 typedef struct s_img
 {
@@ -89,7 +92,6 @@ typedef struct s_img
 	char	**map;
 	char	*top;
 }	t_img;
-
 
 typedef struct s_data
 {
