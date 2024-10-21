@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 12:47:08 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/10/21 11:46:12 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/10/21 12:05:05 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	move_up(t_game *game, t_player *p)
 		
 	}
 }
+
 void	move_down(t_game *game, t_player *p)
 {
 	if (game->map[(int)(p->pos_y)][(int)(p->pos_x + p->dir_x * MOVE_SPEED)] == '0')
@@ -55,6 +56,7 @@ void	move_down(t_game *game, t_player *p)
 		}
 	}
 }
+
 void	rot_right(t_player *p)
 {
 	double old_dir_x = p->dir_x;
