@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: aneitenb <aneitenb@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 11:39:07 by aneitenb          #+#    #+#             */
-/*   Updated: 2024/10/18 13:20:37 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/10/21 11:29:15 by aneitenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,11 @@ void	init_ray(t_ray *ray, t_player *player, int x)
 	ray->delta_dist_y = fabs(1 / ray->ray_dir_y);
 	ray->hit = 0;
 }
-/*
--adding .5 moves the player to the center of the grid cell
--We mark the position as empty after setting player
-*/
 
-/*
-.66 value represents the length of the plane vector, the raycasting loop goes 
+/*.66 value represents the length of the plane vector, the raycasting loop goes
 from -1 to 1 across the screen width. This value is multiplied by the plane 
 vector to get the ray direction. So .66 creates an FOV of about 66 degrees, 
-which is close to a realistic human field of view for a computer screen
-*/
+which is close to a realistic human field of view for a computer screen */
 void	set_initial_direction2(t_player *player, char direction)
 {
 	if (direction == 'E')
@@ -51,6 +45,7 @@ void	set_initial_direction2(t_player *player, char direction)
 		player->plane_y = -0.66;
 	}
 }
+
 void set_initial_direction(t_player *player, char direction)
 {
 	if (direction == 'N')
@@ -72,6 +67,9 @@ void set_initial_direction(t_player *player, char direction)
 	else if (direction == 'W')
 		set_initial_direction2(player, direction);
 }
+
+// adding .5 moves the player to the center of the grid cell
+// We mark the position as empty after setting player
 int	position_direction_wrapper(t_game *game, int x, int y, char c)
 {
 	game->player.pos_x = x + 0.5;
@@ -80,6 +78,7 @@ int	position_direction_wrapper(t_game *game, int x, int y, char c)
 	set_initial_direction(&game->player, c);
 	return (1);
 }
+
 void find_player_start(t_game *game, t_data *data)
 {
 	int	y;
@@ -108,6 +107,9 @@ void find_player_start(t_game *game, t_data *data)
 		y++;
 	}
 }
+
+//takes a char** representing RGB values and converts 
+//them into a single integer that represents the color
 int create_trgb(char **floor)
 {
 	int tmp;
