@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 13:07:01 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/10/18 15:45:42 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/10/21 14:08:01 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,6 @@ int		validate_map(char **map);
 //game setup 
 void 	ray_casting(t_game *game);
 void	run_game(t_game *game);
-void	handle_input(t_game *game);
 
 //free functions here
 void	ft_error(char *msg);

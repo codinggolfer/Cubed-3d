@@ -6,13 +6,13 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 13:33:23 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/10/10 13:53:24 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/10/21 14:07:52 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void ft_error(char *msg)
+void	ft_error(char *msg)
 {
 	int	i;
 
@@ -52,7 +52,7 @@ int	count_arg_array(char **array)
 	return (i);
 }
 
-void free_structs(t_data *data)
+void	free_structs(t_data *data)
 {
 	if (data->img->ceiling)
 		free (data->img->ceiling);

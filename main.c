@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 12:12:30 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/10/18 12:25:54 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/10/21 14:08:09 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,9 @@ int main(int ac, char **av)
 		check_map(av[1], data);
 		init_game(game, data);
 		run_game(game);
-		//free_stuff(); //TODO
 	}
 	else
 		ft_printf ("%s\n", "invalid amount of arguments");
-	free_structs(data);	//add game struct frees
+	free_structs(data);
 	exit (0);
 }
