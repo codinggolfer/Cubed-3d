@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: aneitenb <aneitenb@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 12:12:30 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/10/18 12:25:54 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/10/21 14:31:32 by aneitenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ int main(int ac, char **av)
 	data = malloc(sizeof(t_data));
 	data->img = malloc(sizeof(t_img));
 	init_data(data);
-	game = malloc(sizeof(t_game));
 	if (ac == 2)
 	{
 		check_map(av[1], data);
+		game = malloc(sizeof(t_game));
 		init_game(game, data);
 		run_game(game);
 		//free_stuff(); //TODO
