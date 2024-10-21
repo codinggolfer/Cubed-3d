@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:43:25 by aneitenb          #+#    #+#             */
-/*   Updated: 2024/10/18 16:03:58 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/10/21 11:52:47 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ void	key_calls(void *param)
 		rot_right(&game->player);
 	else if (mlx_is_key_down(game->mlx, MLX_KEY_LEFT))
 		rot_left(&game->player);
-	else if (mlx_is_key_down(game->mlx, MLX_KEY_D))
-		strife_left(game, &game->player);
 	else if (mlx_is_key_down(game->mlx, MLX_KEY_A))
+		strife_left(game, &game->player);
+	else if (mlx_is_key_down(game->mlx, MLX_KEY_D))
 		strife_right(game, &game->player);
 }
 

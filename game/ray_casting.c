@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 14:14:45 by aneitenb          #+#    #+#             */
-/*   Updated: 2024/10/18 17:59:15 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/10/21 11:37:20 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void    perform_dda(t_ray *ray, char **map)
 			&& ray->map_y >= 1 && ray->map_y < count_arg_array(map) - 1)
 		{
     		if (map[ray->map_y][ray->map_x] == '1')
-        	ray->hit = 1;
+        		ray->hit = 1;
 		}
 		else
 			ray->hit = 1;
@@ -133,8 +133,8 @@ void    ray_casting(t_game *game)
 			color = 0xFF0000FF;  // Red if side is 1
 		else
 			color = 0x00FF00FF;    // otherwise green
-		draw_vertical_line(game->img, x, draw_start, draw_end, color);
 		draw_floor_ceiling(game->img, x, draw_start, draw_end, game);
+		draw_vertical_line(game->img, x, draw_start, draw_end, color);
 		x++;
 	}
 }
