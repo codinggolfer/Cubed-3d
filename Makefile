@@ -12,7 +12,6 @@ FILES	=	main.c \
 			game/init.c \
 			game/ray_casting.c \
 			game/run.c \
-			game/handle_input.c \
 			game/move.c \
 			game/strife.c
 
@@ -28,6 +27,7 @@ LIBS	= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
 FtoO	=	$(FILES:.c=.o)
 
 CC		=	cc
+CFLAGS	=	-Wall  -Werror -Ofast -g -fsanitize=address -Wextra
 CFLAGS	=	-Wall  -Werror -Ofast -g #-fsanitize=address -Wextra
 RM		=	rm -f
 

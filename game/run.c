@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   run.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: aneitenb <aneitenb@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:43:25 by aneitenb          #+#    #+#             */
-/*   Updated: 2024/10/21 12:11:33 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/10/21 14:32:06 by aneitenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void game_loop(void* param)
     t_game *game = (t_game*)param;
 	
     ray_casting(game);
+	
    // handle_input(game);
     //-->actions to key presses, move player, roatate player
 }
