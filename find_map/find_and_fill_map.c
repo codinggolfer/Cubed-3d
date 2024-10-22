@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 12:27:00 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/10/16 12:31:04 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/10/22 13:25:51 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,12 @@ void	check_nl(char *str, t_data *data)
 	int	i;
 
 	i = 0;
+	if (ft_strlen(str) > 9000)
+	{
+		free(str);
+		free_structs(data);
+		ft_error("Error\nmap size cap hit");
+	}
 	while (str[i])
 	{
 		if (str[i] == '\n' && str[i + 1] == '\n')
@@ -26,6 +32,7 @@ void	check_nl(char *str, t_data *data)
 			data->dup_char++;
 		i++;
 	}
+	
 }
 
 void find_map(int fd, t_data *data)
