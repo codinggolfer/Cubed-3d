@@ -3,29 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: aneitenb <aneitenb@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 12:12:30 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/10/21 14:41:02 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/10/22 11:24:56 by aneitenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-void	init_data(t_data *data)
-{
-	data->img->ceiling = NULL;
-	data->img->ea = NULL;
-	data->img->floor = NULL;
-	data->img->map = NULL;
-	data->img->no = NULL;
-	data->img->so = NULL;
-	data->img->top = NULL;
-	data->img->we = NULL;
-	data->dup_flag = 0;
-	data->dup_char = 0;
-	data->nl_flag = 0;
-}
 
 int main(int ac, char **av)
 {

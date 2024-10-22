@@ -6,7 +6,7 @@
 /*   By: aneitenb <aneitenb@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:43:25 by aneitenb          #+#    #+#             */
-/*   Updated: 2024/10/21 14:32:06 by aneitenb         ###   ########.fr       */
+/*   Updated: 2024/10/22 11:30:08 by aneitenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,9 @@ void	key_calls(void *param)
 
 void game_loop(void* param)
 {
-    t_game *game = (t_game*)param;
+	t_game *game = (t_game*)param;
 	
-    ray_casting(game);
-	
-   // handle_input(game);
-    //-->actions to key presses, move player, roatate player
+	ray_casting(game);
 }
 
 void	run_game(t_game *game)
@@ -51,5 +48,9 @@ void	run_game(t_game *game)
 	mlx_loop_hook(game->mlx, &game_loop, game);
 	mlx_loop_hook(game->mlx, &key_calls, game);
 	mlx_loop(game->mlx);
+	mlx_delete_texture(game->no_txt);
+	mlx_delete_texture(game->so_txt);
+	mlx_delete_texture(game->ea_txt);
+	mlx_delete_texture(game->we_txt);
 	mlx_terminate(game->mlx);
 }
