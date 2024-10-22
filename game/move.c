@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: aneitenb <aneitenb@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 12:47:08 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/10/21 12:05:05 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/10/22 11:22:57 by aneitenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,67 +14,60 @@
 
 void	move_up(t_game *game, t_player *p)
 {
-	if (game->map[(int)(p->pos_y)][(int)(p->pos_x + p->dir_x * MOVE_SPEED)] == '0')
-	{
-        p->pos_x += p->dir_x * MOVE_SPEED;
-		if (game->map[(int)(p->pos_y)][(int)(p->pos_x + p->dir_x * MOVE_SPEED)] == '1')
-		{
-		    p->pos_x -= p->dir_x * MOVE_SPEED;
-			return ;
-		}
-	}
-   	if (game->map[(int)(p->pos_y + p->dir_y * MOVE_SPEED)][(int)(p->pos_x)] == '0')
-	{
-        p->pos_y += p->dir_y * MOVE_SPEED;
-		if (game->map[(int)(p->pos_y + p->dir_y * MOVE_SPEED)][(int)(p->pos_x)] == '1')
-		{
-			p->pos_y -= p->dir_y * MOVE_SPEED;
-			return ;
-		}
-		
-	}
+	double	new_x;
+	double	new_y;
+
+	new_x = p->pos_x + p->dir_x * MOVE_SPEED;
+	new_y = p->pos_y + p->dir_y * MOVE_SPEED;
+	if (game->map[(int)(p->pos_y)][(int)(new_x)] == '0')
+		p->pos_x = new_x;
+	if (game->map[(int)(new_y)][(int)(p->pos_x)] == '0')
+		p->pos_y = new_y;
 }
 
 void	move_down(t_game *game, t_player *p)
 {
-	if (game->map[(int)(p->pos_y)][(int)(p->pos_x + p->dir_x * MOVE_SPEED)] == '0')
-	{
-        p->pos_x -= p->dir_x * MOVE_SPEED;
-		if (game->map[(int)(p->pos_y)][(int)(p->pos_x + p->dir_x * MOVE_SPEED)] == '1')
-		{
-			p->pos_x += p->dir_x * MOVE_SPEED;
-			return ;
-		}
-	}
-	if (game->map[(int)(p->pos_y - p->dir_y * MOVE_SPEED)][(int)(p->pos_x)] == '0')
-	{
-        p->pos_y -= p->dir_y * MOVE_SPEED;
-		if (game->map[(int)(p->pos_y)][(int)(p->pos_x + p->dir_x * MOVE_SPEED)] == '1')
-		{
-			p->pos_y += p->dir_y * MOVE_SPEED;
-			return ;
-		}
-	}
+	double	new_x;
+	double	new_y;
+	
+	new_x = p->pos_x - p->dir_x * MOVE_SPEED;
+	new_y = p->pos_y - p->dir_y * MOVE_SPEED;
+	if (game->map[(int)(p->pos_y)][(int)(new_x)] == '0')
+		p->pos_x = new_x;
+	if (game->map[(int)(new_y)][(int)(p->pos_x)] == '0')
+		p->pos_y = new_y;
 }
 
-void	rot_right(t_player *p)
+void	strife_left(t_game *game, t_player *p)
 {
-	double old_dir_x = p->dir_x;
-    p->dir_x = p->dir_x * cos(ROTATE_SPEED) - p->dir_y * sin(ROTATE_SPEED);
-    p->dir_y = old_dir_x * sin(ROTATE_SPEED) + p->dir_y * cos(ROTATE_SPEED);
-
-    double old_plane_x = p->plane_x;
-    p->plane_x = p->plane_x * cos(ROTATE_SPEED) - p->plane_y * sin(ROTATE_SPEED);
-    p->plane_y = old_plane_x * sin(ROTATE_SPEED) + p->plane_y * cos(ROTATE_SPEED);
+	double	strafe_x;
+	double	strafe_y;
+	double	new_x;
+	double	new_y;
+	
+	strafe_x = p->dir_y;
+	strafe_y = -p->dir_x;
+	new_x = p->pos_x + strafe_x * MOVE_SPEED;
+	new_y = p->pos_y + strafe_y * MOVE_SPEED;
+	if (game->map[(int)(p->pos_y)][(int)(new_x)] == '0')
+		p->pos_x = new_x;
+	if (game->map[(int)(new_y)][(int)(p->pos_x)] == '0')
+		p->pos_y = new_y;
 }
 
-void	rot_left(t_player *p)
+void	strife_right(t_game *game, t_player *p)
 {
-	double old_dir_x = p->dir_x;
-    p->dir_x = p->dir_x * cos(-ROTATE_SPEED) - p->dir_y * sin(-ROTATE_SPEED);
-    p->dir_y = old_dir_x * sin(-ROTATE_SPEED) + p->dir_y * cos(-ROTATE_SPEED);
+	double	strafe_x;
+	double	strafe_y;
+	double	new_x;
+	double	new_y;
 
-    double old_plane_x = p->plane_x;
-    p->plane_x = p->plane_x * cos(-ROTATE_SPEED) - p->plane_y * sin(-ROTATE_SPEED);
-    p->plane_y = old_plane_x * sin(-ROTATE_SPEED) + p->plane_y * cos(-ROTATE_SPEED);
+	strafe_x = -p->dir_y;
+	strafe_y = p->dir_x;
+	new_x = p->pos_x + strafe_x * MOVE_SPEED;
+	new_y = p->pos_y + strafe_y * MOVE_SPEED;
+	if (game->map[(int)(p->pos_y)][(int)(new_x)] == '0')
+		p->pos_x = new_x;
+	if (game->map[(int)(new_y)][(int)(p->pos_x)] == '0')
+		p->pos_y = new_y;
 }

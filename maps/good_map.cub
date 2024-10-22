@@ -4,11 +4,11 @@ C                            155,100,255
 
 SO         ./textures/south.png
 
-WE                             ./textures/spiderman.png
+WE                             ./textures/west.png
 
 F                                   70,10,255                
 
-EA                                      ./textures/bart.png
+EA                                      ./textures/east.png
 
 1111111111111111111111
 1000000000000000000001

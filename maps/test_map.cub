@@ -5,13 +5,13 @@ NO                        ./textures/south.png
 
 C                            155,100,255            
 
-SO         ./textures/bart.png
+SO         ./textures/south.png
 
-WE                             ./textures/spiderman.png
+WE                             ./textures/west.png
 
 F                                   70,10,255                
 
-EA                                      ./textures/bart.png
+EA                                      ./textures/east.png
 
 
 
