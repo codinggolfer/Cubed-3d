@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aneitenb <aneitenb@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 13:07:01 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/10/22 11:28:42 by aneitenb         ###   ########.fr       */
+/*   Updated: 2024/10/22 19:16:54 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # include <fcntl.h>
 # include <stdio.h> //remove if needed
 
-# define SCREEN_WIDTH 640
-# define SCREEN_HEIGHT 480
+# define SCREEN_WIDTH 860
+# define SCREEN_HEIGHT 640
 # define FOV 60
 # define MOVE_SPEED 0.05
 # define ROTATE_SPEED 0.03
@@ -85,6 +85,7 @@ typedef struct s_game {
 	int				tex_y;// Y-coordinate on texture
 	double			step;// Step size for texture mapping
 	double			tex_pos;// Current texture position
+	double			tmp_perp;
 } t_game;
 
 typedef struct s_img

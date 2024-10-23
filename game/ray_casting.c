@@ -6,7 +6,7 @@
 /*   By: aneitenb <aneitenb@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 14:14:45 by aneitenb          #+#    #+#             */
-/*   Updated: 2024/10/23 12:34:56 by aneitenb         ###   ########.fr       */
+/*   Updated: 2024/10/23 15:25:21 by aneitenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,8 @@ void	calculate_wall(t_ray *ray, t_player *player, t_draw *draw)
 	else
 		ray->perp_wall_dist = (ray->map_y - player->pos_y
 			+ (1 - ray->step_y) / 2) / ray->ray_dir_y;
+	if (ray->perp_wall_dist < 0.95)
+		ray->perp_wall_dist = 0.95;	
 	line_height = (int)(SCREEN_HEIGHT / ray->perp_wall_dist);
 	draw->start = -line_height / 2 + SCREEN_HEIGHT / 2;
 	if (draw->start < 0)
@@ -100,8 +102,8 @@ void    ray_casting(t_game *game)
 		calculate_step(&ray, &game->player);
 		perform_dda(&ray, game->map);
 		calculate_wall(&ray, &game->player, &draw);
+		game->tmp_perp = ray.perp_wall_dist;
 		draw_textured_wall_slice(game, &ray, draw, x);
-		// draw_textured_wall_slice(game->img, texture, x, draw_start, draw_end, &ray, &game->player);
 		draw_floor_ceiling(game->img, x, &draw, game);
 		x++;
 	}
