@@ -6,7 +6,7 @@
 /*   By: aneitenb <aneitenb@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 14:14:45 by aneitenb          #+#    #+#             */
-/*   Updated: 2024/10/22 11:30:26 by aneitenb         ###   ########.fr       */
+/*   Updated: 2024/10/23 12:34:56 by aneitenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ void	calculate_step(t_ray *ray, t_player *player)
 	}
 }
 
+//digital differential analysis
+//it finds which grid cell (map[x,y]) has a wall along the ray
 void    perform_dda(t_ray *ray, char **map)
 {
 	while (ray->hit == 0)
@@ -63,14 +65,7 @@ void    perform_dda(t_ray *ray, char **map)
 	}
 }
 
-int get_texture_index(char wall_type)
-{
-	if (wall_type == '1')
-		return 0;
-	else
-		return -1;
-}
-
+/*	side = 0 (vertical walls), side = 1 (horizontal walls)*/
 void	calculate_wall(t_ray *ray, t_player *player, t_draw *draw)
 {
 	int	line_height;
