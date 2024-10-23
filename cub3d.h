@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: aneitenb <aneitenb@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 13:07:01 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/10/22 19:16:54 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/10/23 17:15:13 by aneitenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # define FOV 60
 # define MOVE_SPEED 0.05
 # define ROTATE_SPEED 0.03
+# define MIN_WALL_DIST 0.5
 
 typedef enum e_key
 {
@@ -60,6 +61,10 @@ typedef struct s_ray {
 	int		step_y;
 	int		hit;
 	int		side;
+	double	true_dist;
+	double wall_hit_x;  // Exact X coordinate where ray hits wall
+    double wall_hit_y;
+	double	wall_x;
 } t_ray;
 
 typedef struct s_draw {

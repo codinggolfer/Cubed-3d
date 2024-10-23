@@ -6,7 +6,7 @@
 /*   By: aneitenb <aneitenb@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 14:14:45 by aneitenb          #+#    #+#             */
-/*   Updated: 2024/10/23 15:25:21 by aneitenb         ###   ########.fr       */
+/*   Updated: 2024/10/23 17:51:56 by aneitenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,8 @@ void	calculate_wall(t_ray *ray, t_player *player, t_draw *draw)
 	else
 		ray->perp_wall_dist = (ray->map_y - player->pos_y
 			+ (1 - ray->step_y) / 2) / ray->ray_dir_y;
-	if (ray->perp_wall_dist < 0.95)
-		ray->perp_wall_dist = 0.95;	
+	// if (ray->perp_wall_dist < 0.95)
+	// 	ray->perp_wall_dist = 0.95;	
 	line_height = (int)(SCREEN_HEIGHT / ray->perp_wall_dist);
 	draw->start = -line_height / 2 + SCREEN_HEIGHT / 2;
 	if (draw->start < 0)
@@ -85,6 +85,36 @@ void	calculate_wall(t_ray *ray, t_player *player, t_draw *draw)
 	draw->end = line_height / 2 + SCREEN_HEIGHT / 2;
 	if (draw->end >= SCREEN_HEIGHT)
 		draw->end = SCREEN_HEIGHT - 1;
+		
+	// Calculate perpendicular wall distance as before
+    if (ray->side == 0)
+        ray->perp_wall_dist = (ray->map_x - player->pos_x
+            + (1 - ray->step_x) / 2) / ray->ray_dir_x;
+    else
+        ray->perp_wall_dist = (ray->map_y - player->pos_y
+            + (1 - ray->step_y) / 2) / ray->ray_dir_y;
+
+    // if (ray->side == 0)
+    // {
+    //     ray->perp_wall_dist = fabs((ray->wall_hit_x - player->pos_x) / ray->ray_dir_x);
+    //     ray->wall_x = player->pos_y + ray->perp_wall_dist * ray->ray_dir_y;
+    // }
+    // else
+    // {
+    //     ray->perp_wall_dist = fabs((ray->wall_hit_y - player->pos_y) / ray->ray_dir_y);
+    //     ray->wall_x = player->pos_x + ray->perp_wall_dist * ray->ray_dir_x;
+    // }
+
+    // // Calculate wall height based on distance
+    // int line_height = (int)(SCREEN_HEIGHT / ray->perp_wall_dist);
+
+    // // Calculate drawing bounds
+    // draw->start = -line_height / 2 + SCREEN_HEIGHT / 2;
+    // if (draw->start < 0)
+    //     draw->start = 0;
+    // draw->end = line_height / 2 + SCREEN_HEIGHT / 2;
+    // if (draw->end >= SCREEN_HEIGHT)
+    //     draw->end = SCREEN_HEIGHT - 1;
 }
 
 void    ray_casting(t_game *game)
