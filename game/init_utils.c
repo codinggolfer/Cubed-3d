@@ -6,14 +6,16 @@
 /*   By: aneitenb <aneitenb@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 10:50:37 by aneitenb          #+#    #+#             */
-/*   Updated: 2024/10/22 11:00:53 by aneitenb         ###   ########.fr       */
+/*   Updated: 2024/10/24 10:06:18 by aneitenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-//takes a char** representing RGB values and converts 
-//them into a single integer that represents the color
+/*
+** takes a char** representing RGB values and converts them into a single 
+** integer that represents the color
+*/
 int create_trgb(char **floor)
 {
 	int tmp;
@@ -25,10 +27,12 @@ int create_trgb(char **floor)
 	return (tmp);
 }
 
-/*.66 value represents the length of the plane vector, the raycasting loop goes
-from -1 to 1 across the screen width. This value is multiplied by the plane 
-vector to get the ray direction. So .66 creates an FOV of about 66 degrees, 
-which is close to a realistic human field of view for a computer screen */
+/*
+** .66 value represents the length of the plane vector, the raycasting loop 
+** goes from -1 to 1 across the screen width. This value is multiplied by the 
+** plane vector to get the ray direction. So .66 creates an FOV of about 66 
+** degrees, which is close to a realistic human field of view 
+*/
 void	set_initial_direction2(t_player *player, char direction)
 {
 	if (direction == 'E')
@@ -69,8 +73,10 @@ void set_initial_direction(t_player *player, char direction)
 		set_initial_direction2(player, direction);
 }
 
-// adding .5 moves the player to the center of the grid cell
-// We mark the position as empty after setting player
+/*
+** Adding .5 to the player to put them in the center of the grid cell
+** We mark the position as empty after setting player
+*/
 int	position_direction_wrapper(t_game *game, int x, int y, char c)
 {
 	game->player.pos_x = x + 0.5;

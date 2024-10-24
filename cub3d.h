@@ -6,7 +6,7 @@
 /*   By: aneitenb <aneitenb@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 13:07:01 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/10/23 17:15:13 by aneitenb         ###   ########.fr       */
+/*   Updated: 2024/10/24 09:57:23 by aneitenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,8 @@
 
 # define SCREEN_WIDTH 860
 # define SCREEN_HEIGHT 640
-# define FOV 60
 # define MOVE_SPEED 0.05
 # define ROTATE_SPEED 0.03
-# define MIN_WALL_DIST 0.5
 
 typedef enum e_key
 {
@@ -34,7 +32,6 @@ typedef enum e_key
 	DOWN,
 	S_LEFT,
 	S_RIGHT
-	
 } t_key;
 
 typedef struct s_player {
@@ -50,26 +47,24 @@ typedef struct s_ray {
 	double	camera_x;
 	double	ray_dir_x;
 	double	ray_dir_y;
-	int		map_x;
-	int		map_y;
 	double	side_dist_x;
 	double	side_dist_y;
 	double	delta_dist_x;
 	double	delta_dist_y;
 	double	perp_wall_dist;
+	int		map_x;
+	int		map_y;
 	int		step_x;
 	int		step_y;
 	int		hit;
 	int		side;
-	double	true_dist;
-	double wall_hit_x;  // Exact X coordinate where ray hits wall
-    double wall_hit_y;
-	double	wall_x;
+	int		true_line_height;
 } t_ray;
 
 typedef struct s_draw {
-	int	start;
-	int	end;
+	double	texture_offset;
+	int		start;
+	int		end;
 } t_draw;
 
 typedef struct s_game {
@@ -88,9 +83,8 @@ typedef struct s_game {
 	double			wall_x;// Wall hit position
 	int				tex_x;// X-coordinate on texture
 	int				tex_y;// Y-coordinate on texture
-	double			step;// Step size for texture mapping
+	double			tex_scale;// Scaling size for texture mapping
 	double			tex_pos;// Current texture position
-	double			tmp_perp;
 } t_game;
 
 typedef struct s_img
