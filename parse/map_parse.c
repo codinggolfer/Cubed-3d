@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_parse.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aneitenb <aneitenb@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 13:25:36 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/10/17 17:18:26 by aneitenb         ###   ########.fr       */
+/*   Updated: 2024/10/24 13:37:28 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	parse_coordinates(t_data *data)
 	if (data->dup_flag == 1)
 	{
 		free_structs(data);
-		ft_error("Error\nduplicate paths");
+		ft_error("Error\nduplicate paths or other nonsense in the mapfile");
 	}
 	if (!is_empty_coord(data))
 	{
@@ -137,5 +137,5 @@ void	check_map(char *str, t_data *data)
 	parse_ceiling(data);
 	parse_floor(data);
 	data->dup_flag = 0;
-	parse_map(data); // TODO
+	parse_map(data);
 }

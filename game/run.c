@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   run.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aneitenb <aneitenb@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:43:25 by aneitenb          #+#    #+#             */
-/*   Updated: 2024/10/24 10:03:20 by aneitenb         ###   ########.fr       */
+/*   Updated: 2024/10/24 14:27:46 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,27 @@ void game_loop(void* param)
 	ray_casting(game);
 }
 
+int	ft_longest(char **map)
+{
+	static int	lenght;
+	int	i;
+
+	if (lenght && lenght > 0)
+		return (lenght);
+	lenght = 0;
+	i = 0;
+	while (map[i])
+	{
+		if (lenght < ft_strlen(map[i]))
+			lenght = ft_strlen(map[i]);
+		i++;
+	}
+	return (lenght);
+}
+
 void	run_game(t_game *game)
 {
+	game->widht = ft_longest(game->map);
 	mlx_loop_hook(game->mlx, &game_loop, game);
 	mlx_loop_hook(game->mlx, &key_calls, game);
 	mlx_loop(game->mlx);

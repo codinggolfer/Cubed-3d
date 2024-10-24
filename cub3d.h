@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aneitenb <aneitenb@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 13:07:01 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/10/24 09:57:23 by aneitenb         ###   ########.fr       */
+/*   Updated: 2024/10/24 14:27:03 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 # define SCREEN_WIDTH 860
 # define SCREEN_HEIGHT 640
-# define MOVE_SPEED 0.05
+# define MOVE_SPEED 0.0501
 # define ROTATE_SPEED 0.03
 
 typedef enum e_key
@@ -85,6 +85,7 @@ typedef struct s_game {
 	int				tex_y;// Y-coordinate on texture
 	double			tex_scale;// Scaling size for texture mapping
 	double			tex_pos;// Current texture position
+	int				widht;
 } t_game;
 
 typedef struct s_img

@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 12:44:02 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/10/16 12:32:39 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/10/24 13:44:10 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ static void	fill_coordinates(char **coordArr, t_data *data)
 	int	i;
 
 	i = 0;
+	if (count_arg_array(coordArr) > 6)
+		data->dup_flag = 1;
 	while (coordArr[i])
 	{
 		if (!ft_strncmp("NO ", coordArr[i], 3))
