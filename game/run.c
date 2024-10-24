@@ -6,7 +6,7 @@
 /*   By: aneitenb <aneitenb@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:43:25 by aneitenb          #+#    #+#             */
-/*   Updated: 2024/10/24 15:02:56 by aneitenb         ###   ########.fr       */
+/*   Updated: 2024/10/24 17:04:03 by aneitenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,17 @@ void	key_calls(void *param)
 		ft_printf("Game closed ESQ was pressed\n");
 		mlx_close_window(game->mlx);
 	}
-	else if (mlx_is_key_down(game->mlx, MLX_KEY_W))
-		move_up(game, &game->player);
-	else if (mlx_is_key_down(game->mlx, MLX_KEY_S))
-		move_down(game, &game->player);
-	else if (mlx_is_key_down(game->mlx, MLX_KEY_RIGHT))
+	if (mlx_is_key_down(game->mlx, MLX_KEY_RIGHT))
 		rot_right(&game->player);
-	else if (mlx_is_key_down(game->mlx, MLX_KEY_LEFT))
+	if (mlx_is_key_down(game->mlx, MLX_KEY_LEFT))
 		rot_left(&game->player);
-	else if (mlx_is_key_down(game->mlx, MLX_KEY_A))
+	if (mlx_is_key_down(game->mlx, MLX_KEY_W))
+		move_up(game, &game->player);
+	if (mlx_is_key_down(game->mlx, MLX_KEY_S))
+		move_down(game, &game->player);
+	if (mlx_is_key_down(game->mlx, MLX_KEY_A))
 		strife_left(game, &game->player);
-	else if (mlx_is_key_down(game->mlx, MLX_KEY_D))
+	if (mlx_is_key_down(game->mlx, MLX_KEY_D))
 		strife_right(game, &game->player);
 }
 
@@ -55,7 +55,7 @@ int	ft_longest(char **map)
 	i = 0;
 	while (map[i])
 	{
-		if (lenght < ft_strlen(map[i]))
+		if (lenght < (int)ft_strlen(map[i]))
 			lenght = ft_strlen(map[i]);
 		i++;
 	}

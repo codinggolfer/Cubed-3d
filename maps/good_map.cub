@@ -6,7 +6,7 @@ SO         ./textures/south.png
 
 WE                             ./textures/west.png
 
-F                                   70,10,255                
+F                                   183,232,233               
 
 EA                                      ./textures/east.png
 

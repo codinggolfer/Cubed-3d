@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   coordinate_validation.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: aneitenb <aneitenb@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 15:46:53 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/10/11 13:01:32 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/10/24 16:58:20 by aneitenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ int	check_values(char **num_arr)
 	
 	j = 0;
 	i = 0;
+	if (count_arg_array(num_arr) != 3)
+		return (1);
 	while (num_arr[i])
 	{
 		while (num_arr[i][j])

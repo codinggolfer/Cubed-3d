@@ -29,7 +29,7 @@ LIBS	= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
 FtoO	=	$(FILES:.c=.o)
 
 CC		=	cc
-CFLAGS	=	-Wall  -Werror -Ofast #-g -fsanitize=address -Wextra
+CFLAGS	=	-Wall -Wextra -Werror -Ofast #-g -fsanitize=address 
 RM		=	rm -f
 
 all:	$(LIBFT) libmlx $(NAME)

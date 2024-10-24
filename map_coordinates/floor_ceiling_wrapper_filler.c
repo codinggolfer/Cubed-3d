@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   floor_ceiling_wrapper_filler.c                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: aneitenb <aneitenb@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 13:17:50 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/10/24 13:41:59 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/10/24 16:56:37 by aneitenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
