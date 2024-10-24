@@ -6,7 +6,7 @@
 /*   By: aneitenb <aneitenb@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 14:14:45 by aneitenb          #+#    #+#             */
-/*   Updated: 2024/10/24 15:01:40 by aneitenb         ###   ########.fr       */
+/*   Updated: 2024/10/24 17:32:10 by aneitenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ void	calculate_step(t_ray *ray, t_player *player)
 	else
 	{
 		ray->step_x = 1;
-		ray->side_dist_x = (ray->map_x + 1.0 - player->pos_x) * ray->delta_dist_x;
+		ray->side_dist_x = (ray->map_x + 1.0 - player->pos_x) * \
+		ray->delta_dist_x;
 	}
 	if (ray->ray_dir_y < 0)
 	{
@@ -32,7 +33,8 @@ void	calculate_step(t_ray *ray, t_player *player)
 	else
 	{
 		ray->step_y = 1;
-		ray->side_dist_y = (ray->map_y + 1.0 - player->pos_y) * ray->delta_dist_y;
+		ray->side_dist_y = (ray->map_y + 1.0 - player->pos_y) * \
+		ray->delta_dist_y;
 	}
 }
 
@@ -40,7 +42,7 @@ void	calculate_step(t_ray *ray, t_player *player)
 ** Digital Differential Analysis
 ** Finds which grid cell (map[x,y]) has a wall along the ray
 */
-void    perform_dda(t_ray *ray, char **map, int width)
+void	perform_dda(t_ray *ray, char **map, int width)
 {
 	while (ray->hit == 0)
 	{
@@ -81,33 +83,28 @@ void	calculate_wall(t_ray *ray, t_player *player, t_draw *draw)
 	int	line_height;
 
 	line_height = 0;
-	// Calculate perpendicular wall distance
 	if (ray->side == 0)
-		ray->perp_wall_dist = (ray->map_x - player->pos_x 
-			+ (1 - ray->step_x) / 2) / ray->ray_dir_x;
+		ray->perp_wall_dist = (ray->map_x - player->pos_x + \
+		(1 - ray->step_x) / 2) / ray->ray_dir_x;
 	else
-		ray->perp_wall_dist = (ray->map_y - player->pos_y 
-			+ (1 - ray->step_y) / 2) / ray->ray_dir_y;
-	// Calculate the true line height before any screen clamping
+		ray->perp_wall_dist = (ray->map_y - player->pos_y + \
+		(1 - ray->step_y) / 2) / ray->ray_dir_y;
 	line_height = (int)(SCREEN_HEIGHT / ray->perp_wall_dist);
-	// Store the original height for texture scaling
 	ray->true_line_height = line_height;
-	// Calculate drawing bounds
 	draw->start = -line_height / 2 + SCREEN_HEIGHT / 2;
 	draw->end = line_height / 2 + SCREEN_HEIGHT / 2;
-	// Calculate texture offset if wall exceeds screen height
 	if (draw->start < 0)
 	{
 		draw->texture_offset = -draw->start;
 		draw->start = 0;
 	}
 	else
-		draw->texture_offset = 0;   
+		draw->texture_offset = 0;
 	if (draw->end >= SCREEN_HEIGHT)
 		draw->end = SCREEN_HEIGHT - 1;
 }
 
-void    ray_casting(t_game *game)
+void	ray_casting(t_game *game)
 {
 	t_ray	ray;
 	int		x;

@@ -6,7 +6,7 @@
 /*   By: aneitenb <aneitenb@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:43:25 by aneitenb          #+#    #+#             */
-/*   Updated: 2024/10/24 17:04:03 by aneitenb         ###   ########.fr       */
+/*   Updated: 2024/10/24 17:32:59 by aneitenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,18 +36,18 @@ void	key_calls(void *param)
 		strife_right(game, &game->player);
 }
 
-void game_loop(void* param)
+void	game_loop(void *param)
 {
 	t_game	*game;
-	
-	game = (t_game*)param;
+
+	game = (t_game *)param;
 	ray_casting(game);
 }
 
 int	ft_longest(char **map)
 {
 	static int	lenght;
-	int	i;
+	int			i;
 
 	if (lenght && lenght > 0)
 		return (lenght);

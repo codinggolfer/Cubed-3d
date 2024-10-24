@@ -6,7 +6,7 @@
 /*   By: aneitenb <aneitenb@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 10:50:37 by aneitenb          #+#    #+#             */
-/*   Updated: 2024/10/24 10:06:18 by aneitenb         ###   ########.fr       */
+/*   Updated: 2024/10/24 17:25:16 by aneitenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 ** takes a char** representing RGB values and converts them into a single 
 ** integer that represents the color
 */
-int create_trgb(char **floor)
+int	create_trgb(char **floor)
 {
-	int tmp;
+	int	tmp;
 
 	tmp = 0;
 	tmp = ft_atoi(floor[0]) << 16;
@@ -51,7 +51,7 @@ void	set_initial_direction2(t_player *player, char direction)
 	}
 }
 
-void set_initial_direction(t_player *player, char direction)
+void	set_initial_direction(t_player *player, char direction)
 {
 	if (direction == 'N')
 	{
@@ -86,10 +86,10 @@ int	position_direction_wrapper(t_game *game, int x, int y, char c)
 	return (1);
 }
 
-void find_player_start(t_game *game, t_data *data)
+void	find_player_start(t_game *game, t_data *data)
 {
 	int	y;
-	int x;
+	int	x;
 	int	player_found;
 
 	player_found = 0;

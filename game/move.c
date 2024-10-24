@@ -6,7 +6,7 @@
 /*   By: aneitenb <aneitenb@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 12:47:08 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/10/23 16:57:45 by aneitenb         ###   ########.fr       */
+/*   Updated: 2024/10/24 17:25:34 by aneitenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	move_down(t_game *game, t_player *p)
 {
 	double	new_x;
 	double	new_y;
-	
+
 	new_x = p->pos_x - p->dir_x * MOVE_SPEED;
 	new_y = p->pos_y - p->dir_y * MOVE_SPEED;
 	if (game->map[(int)(p->pos_y)][(int)(new_x)] == '0')
@@ -44,7 +44,7 @@ void	strife_left(t_game *game, t_player *p)
 	double	strafe_y;
 	double	new_x;
 	double	new_y;
-	
+
 	strafe_x = p->dir_y;
 	strafe_y = -p->dir_x;
 	new_x = p->pos_x + strafe_x * MOVE_SPEED;
