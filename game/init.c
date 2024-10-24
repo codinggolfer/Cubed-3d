@@ -6,7 +6,7 @@
 /*   By: aneitenb <aneitenb@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 11:39:07 by aneitenb          #+#    #+#             */
-/*   Updated: 2024/10/24 09:48:37 by aneitenb         ###   ########.fr       */
+/*   Updated: 2024/10/24 11:24:27 by aneitenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,32 @@ void	init_data(t_data *data)
 
 void	init_ray(t_ray *ray, t_player *player, int x)
 {
+	// ray->camera_x = 2 * x / (double)SCREEN_WIDTH - 1;
+	// ray->ray_dir_x = player->dir_x + player->plane_x * ray->camera_x;
+	// ray->ray_dir_y = player->dir_y + player->plane_y * ray->camera_x;
+	// ray->map_x = (int)player->pos_x;
+	// ray->map_y = (int)player->pos_y;
+	// ray->delta_dist_x = fabs(1 / ray->ray_dir_x);
+	// ray->delta_dist_y = fabs(1 / ray->ray_dir_y);
+	// ray->hit = 0;
 	ray->camera_x = 2 * x / (double)SCREEN_WIDTH - 1;
-	ray->ray_dir_x = player->dir_x + player->plane_x * ray->camera_x;
-	ray->ray_dir_y = player->dir_y + player->plane_y * ray->camera_x;
-	ray->map_x = (int)player->pos_x;
-	ray->map_y = (int)player->pos_y;
-	ray->delta_dist_x = fabs(1 / ray->ray_dir_x);
-	ray->delta_dist_y = fabs(1 / ray->ray_dir_y);
-	ray->hit = 0;
+    ray->ray_dir_x = player->dir_x + player->plane_x * ray->camera_x;
+    ray->ray_dir_y = player->dir_y + player->plane_y * ray->camera_x;
+    ray->map_x = (int)player->pos_x;
+    ray->map_y = (int)player->pos_y;
+    
+    // If ray direction is near zero, use max distance instead of infinity
+    if (fabs(ray->ray_dir_x) < 0.0001)
+        ray->delta_dist_x = 1e30;
+    else
+        ray->delta_dist_x = fabs(1 / ray->ray_dir_x);
+        
+    if (fabs(ray->ray_dir_y) < 0.0001)
+        ray->delta_dist_y = 1e30;
+    else
+        ray->delta_dist_y = fabs(1 / ray->ray_dir_y);
+        
+    ray->hit = 0;
 }
 
 void	load_textures(t_game *game, t_data *data)

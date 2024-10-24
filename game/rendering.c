@@ -6,7 +6,7 @@
 /*   By: aneitenb <aneitenb@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 11:26:09 by aneitenb          #+#    #+#             */
-/*   Updated: 2024/10/24 10:01:35 by aneitenb         ###   ########.fr       */
+/*   Updated: 2024/10/24 11:12:15 by aneitenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,10 @@ static mlx_texture_t *select_wall_texture(t_game *game, t_ray *ray)
 	}
 	else  // Horizontal wall hit
 	{
+		// Special case for back wall
+        if (ray->map_y >= count_arg_array(game->map) - 2)  // If we're at the last valid row
+            return (game->no_txt);  // Force north texture for back wall
+			
 		if (ray->ray_dir_y > 0)
 			return (game->so_txt);
 		return (game->no_txt);

@@ -6,7 +6,7 @@
 /*   By: aneitenb <aneitenb@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 14:14:45 by aneitenb          #+#    #+#             */
-/*   Updated: 2024/10/24 10:02:07 by aneitenb         ###   ########.fr       */
+/*   Updated: 2024/10/24 11:43:19 by aneitenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 
 void	calculate_step(t_ray *ray, t_player *player)
 {
+	printf("Debug - Player position: pos_x=%f, pos_y=%f\n", player->pos_x, player->pos_y);
+    printf("Debug - Ray map position: map_x=%d, map_y=%d\n", ray->map_x, ray->map_y);
+    printf("Debug - Ray direction: ray_dir_x=%f, ray_dir_y=%f\n", ray->ray_dir_x, ray->ray_dir_y);
+    printf("Debug - Delta distances: delta_x=%f, delta_y=%f\n", ray->delta_dist_x, ray->delta_dist_y);
 	if (ray->ray_dir_x < 0)
 	{
 		ray->step_x = -1;
@@ -32,39 +36,93 @@ void	calculate_step(t_ray *ray, t_player *player)
 	else
 	{
 		ray->step_y = 1;
-		ray->side_dist_y = (ray->map_y + 1.0 - player->pos_y) * ray->delta_dist_y;
+		if (player->pos_y == ray->map_y + 1.0)  // If exactly on grid line
+        {
+            // Force it to check one grid cell in the direction we're looking
+            ray->side_dist_y = ray->delta_dist_y * .000001;
+        }
+        else
+        {
+            ray->side_dist_y = (ray->map_y + 1.0 - player->pos_y) * ray->delta_dist_y;
+        }
+		// ray->side_dist_y = (ray->map_y + 1.0 - player->pos_y) * ray->delta_dist_y;
 	}
+	printf("Debug - After calculation: side_dist_x=%f, side_dist_y=%f\n", 
+           ray->side_dist_x, ray->side_dist_y);
+    printf("Debug - Steps: step_x=%d, step_y=%d\n\n", ray->step_x, ray->step_y);
 }
 
 /*
 ** Digital Differential Analysis
 ** Finds which grid cell (map[x,y]) has a wall along the ray
 */
+// void    perform_dda(t_ray *ray, char **map)
+// {
+// 	while (ray->hit == 0)
+// 	{
+// 		//   printf("Pre-step: side_dist_x=%f, side_dist_y=%f\n", 
+//             //    ray->side_dist_x, ray->side_dist_y);
+// 		if (ray->side_dist_x < ray->side_dist_y + .0001)
+// 		{
+// 			ray->side_dist_x += ray->delta_dist_x;
+// 			ray->map_x += ray->step_x;
+// 			ray->side = 0;
+// 		}
+// 		else
+// 		{
+// 			ray->side_dist_y += ray->delta_dist_y;
+// 			ray->map_y += ray->step_y;
+// 			ray->side = 1;
+// 			//  printf("Stepped Y: new map_y=%d\n", ray->map_y);
+// 		}
+// 		if (ray->map_x >= 0 && (size_t)ray->map_x < ft_strlen(map[0])
+// 			&& ray->map_y >= 0 && ray->map_y < count_arg_array(map))
+// 		{
+// 			if (map[ray->map_y][ray->map_x] == '1')
+// 			{
+// 				ray->hit = 1;
+// 				   printf("Debug - Wall hit details:\n");
+//    					 printf("  Position: map[%d][%d]\n", ray->map_y, ray->map_x);
+//     					printf("  Side: %d\n", ray->side);
+//     					printf("  Final side_dist_x: %f, side_dist_y: %f\n", 
+//     				       ray->side_dist_x, ray->side_dist_y);
+// 			}
+// 		}
+// 		else
+// 			ray->hit = 1;
+// 	}
+// }
 void    perform_dda(t_ray *ray, char **map)
 {
-	while (ray->hit == 0)
-	{
-		if (ray->side_dist_x < ray->side_dist_y)
-		{
-			ray->side_dist_x += ray->delta_dist_x;
-			ray->map_x += ray->step_x;
-			ray->side = 0;
-		}
-		else
-		{
-			ray->side_dist_y += ray->delta_dist_y;
-			ray->map_y += ray->step_y;
-			ray->side = 1;
-		}
-		if (ray->map_x >= 1 && (size_t)ray->map_x < ft_strlen(map[0])
-			&& ray->map_y >= 1 && ray->map_y < count_arg_array(map) - 1)
-		{
-			if (map[ray->map_y][ray->map_x] == '1')
-				ray->hit = 1;
-		}
-		else
-			ray->hit = 1;
-	}
+    while (ray->hit == 0)
+    {
+        if (ray->side_dist_x < ray->side_dist_y)
+        {
+            ray->side_dist_x += ray->delta_dist_x;
+            ray->map_x += ray->step_x;
+            ray->side = 0;
+        }
+        else
+        {
+            ray->side_dist_y += ray->delta_dist_y;
+            ray->map_y += ray->step_y;
+            ray->side = 1;
+        }
+
+        if (ray->map_x >= 0 && (size_t)ray->map_x < ft_strlen(map[0])
+            && ray->map_y >= 0 && ray->map_y < count_arg_array(map))
+        {
+            if (map[ray->map_y][ray->map_x] == '1')
+            {
+                ray->hit = 1;
+                // Special case: if we hit the back wall, force it to be a horizontal hit
+                if (ray->map_y == count_arg_array(map) - 2)  // If this is the back wall
+                    ray->side = 1;
+            }
+        }
+        else
+            ray->hit = 1;
+    }
 }
 
 /*
