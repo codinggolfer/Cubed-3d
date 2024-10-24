@@ -6,11 +6,11 @@
 /*   By: aneitenb <aneitenb@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 12:47:08 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/10/24 17:25:34 by aneitenb         ###   ########.fr       */
+/*   Updated: 2024/10/24 17:39:49 by aneitenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../../includes/cub3d.h"
 
 void	move_up(t_game *game, t_player *p)
 {

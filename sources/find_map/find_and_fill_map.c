@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   find_and_fill_map.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: aneitenb <aneitenb@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 12:27:00 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/10/24 17:28:07 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/10/24 17:39:33 by aneitenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../../includes/cub3d.h"
 
 void	check_nl(char *str, t_data *data)
 {

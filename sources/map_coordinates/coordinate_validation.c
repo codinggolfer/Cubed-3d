@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   coordinate_validation.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: aneitenb <aneitenb@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 15:46:53 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/10/24 17:26:35 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/10/24 17:40:02 by aneitenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../../includes/cub3d.h"
 
 int	is_empty_coord(t_data *data)
 {

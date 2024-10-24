@@ -6,11 +6,11 @@
 /*   By: aneitenb <aneitenb@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 10:50:37 by aneitenb          #+#    #+#             */
-/*   Updated: 2024/10/24 17:25:16 by aneitenb         ###   ########.fr       */
+/*   Updated: 2024/10/24 17:39:42 by aneitenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../../includes/cub3d.h"
 
 /*
 ** takes a char** representing RGB values and converts them into a single 

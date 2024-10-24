@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   map_and_coordinates.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: aneitenb <aneitenb@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 12:44:02 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/10/24 17:25:06 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/10/24 17:40:10 by aneitenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../../includes/cub3d.h"
 
 static void	fill_coordinates(char **coordArr, t_data *data)
 {

@@ -1,21 +1,21 @@
 NAME	=	cub3D
 
-FILES	=	main.c \
-			parse/map_parse.c \
-			error_free.c \
-			map_coordinates/coordinate_wrapper_filler.c \
-			map_coordinates/floor_ceiling_wrapper_filler.c \
-			map_coordinates/map_and_coordinates.c  \
-			find_map/find_and_fill_map.c \
-			map_coordinates/coordinate_validation.c \
-			parse/validate_map.c \
-			game/init.c \
-			game/init_utils.c \
-			game/ray_casting.c \
-			game/run.c \
-			game/move.c \
-			game/rotate.c \
-			game/rendering.c
+FILES	=	sources/main.c \
+			sources/error_free.c \
+			sources/parse/map_parse.c \
+			sources/map_coordinates/coordinate_wrapper_filler.c \
+			sources/map_coordinates/floor_ceiling_wrapper_filler.c \
+			sources/map_coordinates/map_and_coordinates.c  \
+			sources/find_map/find_and_fill_map.c \
+			sources/map_coordinates/coordinate_validation.c \
+			sources/parse/validate_map.c \
+			sources/game/init.c \
+			sources/game/init_utils.c \
+			sources/game/ray_casting.c \
+			sources/game/run.c \
+			sources/game/move.c \
+			sources/game/rotate.c \
+			sources/game/rendering.c
 
 
 LIBFT	=	libft/libft.a
@@ -34,7 +34,7 @@ RM		=	rm -f
 
 all:	$(LIBFT) libmlx $(NAME)
 
-$(NAME): cub3d.h $(FtoO) 
+$(NAME): ./includes/cub3d.h $(FtoO) 
 	$(CC) $(CFLAGS) $(HEADERS) $(FtoO) $(INCLUDES) $(LIBS) $(LIBFT) -o $(NAME)
 
 libmlx: 

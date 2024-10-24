@@ -6,11 +6,11 @@
 /*   By: aneitenb <aneitenb@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 11:26:09 by aneitenb          #+#    #+#             */
-/*   Updated: 2024/10/24 17:34:24 by aneitenb         ###   ########.fr       */
+/*   Updated: 2024/10/24 17:39:53 by aneitenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../../includes/cub3d.h"
 
 void	draw_floor_ceiling(mlx_image_t *img, int x, t_draw *draw, t_game *game)
 {

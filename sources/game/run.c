@@ -6,11 +6,11 @@
 /*   By: aneitenb <aneitenb@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:43:25 by aneitenb          #+#    #+#             */
-/*   Updated: 2024/10/24 17:32:59 by aneitenb         ###   ########.fr       */
+/*   Updated: 2024/10/24 17:39:58 by aneitenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../../includes/cub3d.h"
 
 void	key_calls(void *param)
 {

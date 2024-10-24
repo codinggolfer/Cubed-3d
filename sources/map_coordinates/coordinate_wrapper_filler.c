@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   coordinate_wrapper_filler.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: aneitenb <aneitenb@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 13:16:29 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/10/24 17:25:54 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/10/24 17:40:05 by aneitenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../../includes/cub3d.h"
 
 void	fill_coord_struct_no(char *coordStr, t_data *data)
 {
