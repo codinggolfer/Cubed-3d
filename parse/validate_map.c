@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 14:03:16 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/10/22 13:35:05 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/10/24 17:23:08 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,11 @@ int	top_bottom_border(char *border)
 	}
 	return (0);
 }
+
 int	check_surround(char *top, char *bottom, int i)
 {
 	size_t	j;
-	
+
 	j = i;
 	if (ft_strlen(top) < j || ft_strlen(bottom) < j)
 		return (0);
@@ -50,10 +51,10 @@ int	check_surround(char *top, char *bottom, int i)
 int	check_next(char *line, int i)
 {
 	if (line[i + 1] && (line[i] == '0' || ft_strchr("NSEW", line[i]))
-		&& (line[i + 1] == ' '|| line[i + 1] == '\t'))
+		&& (line[i + 1] == ' ' || line[i + 1] == '\t'))
 		return (0);
 	if (line[i - 1] && line[i] == '0' && (line[i - 1] == ' '
-		|| line[i - 1] == '\t'))
+			|| line[i - 1] == '\t'))
 		return (0);
 	return (1);
 }
@@ -61,7 +62,7 @@ int	check_next(char *line, int i)
 int	inside_map(char *line, char *top, char *bottom)
 {
 	int	i;
-	
+
 	i = 0;
 	while (line[i] == '\t' || line[i] == ' ')
 		i++;
@@ -83,7 +84,7 @@ int	inside_map(char *line, char *top, char *bottom)
 	}
 	if (line[i - 1] == '0')
 		return (2);
-	return (0);	
+	return (0);
 }
 
 int	validate_map(char **map)
@@ -111,5 +112,4 @@ int	validate_map(char **map)
 	if (flag)
 		return (1);
 	return (0);
-	
 }

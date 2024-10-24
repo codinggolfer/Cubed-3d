@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   coordinate_validation.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aneitenb <aneitenb@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 15:46:53 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/10/24 16:58:20 by aneitenb         ###   ########.fr       */
+/*   Updated: 2024/10/24 17:26:35 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ int	is_empty_coord(t_data *data)
 	return (1);
 }
 
-static int open_check(char *path)
+static int	open_check(char *path)
 {
-	int fd;
+	int	fd;
 	int	len;
 
 	len = ft_strlen(path) - 4;
@@ -55,7 +55,7 @@ int	check_values(char **num_arr)
 {
 	int	i;
 	int	j;
-	
+
 	j = 0;
 	i = 0;
 	if (count_arg_array(num_arr) != 3)

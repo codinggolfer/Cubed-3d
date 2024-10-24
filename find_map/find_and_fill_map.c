@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 12:27:00 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/10/22 13:25:51 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/10/24 17:28:07 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,12 @@ void	check_nl(char *str, t_data *data)
 			data->dup_char++;
 		i++;
 	}
-	
 }
 
-void find_map(int fd, t_data *data)
+void	find_map(int fd, t_data *data)
 {
-	char 	*line;
-	char 	*temp;
+	char	*line;
+	char	*temp;
 
 	if (data->img->top)
 		line = ft_strdup(data->img->top);

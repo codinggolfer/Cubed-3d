@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 13:25:36 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/10/24 13:37:28 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/10/24 17:24:30 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void	parse_ceiling(t_data *data)
 	char	**temp;
 
 	flag = 0;
-	
 	if (!data->img->ceiling)
 	{
 		free_structs(data);
@@ -70,7 +69,6 @@ void	parse_floor(t_data *data)
 	char	**temp;
 
 	flag = 0;
-	
 	if (!data->img->floor)
 	{
 		free_structs(data);
@@ -117,7 +115,6 @@ void	parse_map(t_data *data)
 			ft_error("Error\ninvalid map: map borders open");
 		if (flag == 3)
 			ft_error("Error\ninvalid map: incorrect value");
-			
 	}
 }
 
@@ -125,11 +122,11 @@ void	check_map(char *str, t_data *data)
 {
 	int	fd;
 	int	len;
-	
+
 	len = ft_strlen(str) - 4;
 	fd = open(str, O_RDONLY);
 	if (fd == -1 || !ft_strnstr(str + len, ".cub", 4))
-			ft_error("Error\nCan't open the map");
+		ft_error("Error\nCan't open the map");
 	find_coordinates(fd, data);
 	find_map(fd, data);
 	close (fd);

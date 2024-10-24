@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aneitenb <aneitenb@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 13:07:01 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/10/24 15:01:51 by aneitenb         ###   ########.fr       */
+/*   Updated: 2024/10/24 17:32:17 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
-#define CUB3D_H
+# define CUB3D_H
 
 # include "./libft/libft.h"
 # include <math.h>
@@ -32,7 +32,7 @@ typedef enum e_key
 	DOWN,
 	S_LEFT,
 	S_RIGHT
-} t_key;
+}	t_key;
 
 typedef struct s_player {
 	double	pos_x;
@@ -41,7 +41,7 @@ typedef struct s_player {
 	double	dir_y;
 	double	plane_x;
 	double	plane_y;
-} t_player;
+}	t_player;
 
 typedef struct s_ray {
 	double	camera_x;
@@ -59,17 +59,17 @@ typedef struct s_ray {
 	int		hit;
 	int		side;
 	int		true_line_height;
-} t_ray;
+}	t_ray;
 
 typedef struct s_draw {
 	double	texture_offset;
 	int		start;
 	int		end;
-} t_draw;
+}	t_draw;
 
 typedef struct s_game {
 	mlx_t			*mlx;
-	mlx_image_t 	*img;
+	mlx_image_t		*img;
 	t_player		player;
 	char			**map;
 	char			**floor_rgb;
@@ -80,13 +80,13 @@ typedef struct s_game {
 	mlx_texture_t	*we_txt;
 	uint32_t		floor_colour;
 	uint32_t		ceiling_colour;
-	double			wall_x;// Wall hit position
-	int				tex_x;// X-coordinate on texture
-	int				tex_y;// Y-coordinate on texture
-	double			tex_scale;// Scaling size for texture mapping
-	double			tex_pos;// Current texture position
+	double			wall_x;
+	int				tex_x;
+	int				tex_y;
+	double			tex_scale;
+	double			tex_pos;
 	int				width;
-} t_game;
+}	t_game;
 
 typedef struct s_img
 {
@@ -112,7 +112,7 @@ typedef struct s_data
 void	init_data(t_data *data);
 void	init_game(t_game *game, t_data *data);
 void	init_ray(t_ray *ray, t_player *player, int x);
-void 	find_player_start(t_game *game, t_data *data);
+void	find_player_start(t_game *game, t_data *data);
 int		create_trgb(char **floor);
 int		position_direction_wrapper(t_game *game, int x, int y, char c);
 
@@ -142,7 +142,7 @@ void	ray_casting(t_game *game);
 void	run_game(t_game *game);
 
 //game rendering
-void draw_textured_wall_slice(t_game *game, t_ray *ray, t_draw draw, int x);
+void	draw_textured_wall_slice(t_game *game, t_ray *ray, t_draw draw, int x);
 void	draw_floor_ceiling(mlx_image_t *img, int x, t_draw *draw, t_game *game);
 
 //free functions here
