@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 13:33:23 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/10/22 14:15:21 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/10/24 17:29:21 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	ft_error(char *msg)
 	int	i;
 
 	i = 0;
-
 	while (msg[i])
 		write(1, &msg[i++], 1);
 	exit (1);
@@ -58,7 +57,7 @@ void	free_structs(t_data *data)
 		free (data->img->ceiling);
 	if (data->img->floor)
 		free (data->img->floor);
-	if (data->img->ea)	
+	if (data->img->ea)
 		free (data->img->ea);
 	if (data->img->so)
 		free (data->img->so);

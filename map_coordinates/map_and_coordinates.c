@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 12:44:02 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/10/24 13:44:10 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/10/24 17:25:06 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ static void	fill_coordinates(char **coordArr, t_data *data)
 
 void	find_coordinates(int fd, t_data *data)
 {
-	char 	*line;
-	char 	*t;
+	char	*line;
+	char	*t;
 
 	line = NULL;
 	while (1)

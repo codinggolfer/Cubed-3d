@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   floor_ceiling_wrapper_filler.c                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aneitenb <aneitenb@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 13:17:50 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/10/24 16:56:37 by aneitenb         ###   ########.fr       */
+/*   Updated: 2024/10/24 17:27:01 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@ void	fill_floor_struct(char *floor, t_data *data)
 {
 	int	comma;
 	int	i;
-	
+
 	i = 0;
 	comma = 0;
 	if (data->dup_flag == 1)
 		return ;
-	while(floor[i++])
+	while (floor[i++])
 	{
 		if (floor[i] == ',')
 			comma++;
@@ -36,12 +36,12 @@ void	fill_ceiling_struct(char *ceiling, t_data *data)
 {
 	int	comma;
 	int	i;
-	
+
 	i = 0;
 	comma = 0;
 	if (data->dup_flag == 1)
 		return ;
-	while(ceiling[i++])
+	while (ceiling[i++])
 	{
 		if (ceiling[i] == ',')
 			comma++;
