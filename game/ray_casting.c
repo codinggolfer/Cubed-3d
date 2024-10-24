@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_casting.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: aneitenb <aneitenb@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 14:14:45 by aneitenb          #+#    #+#             */
-/*   Updated: 2024/10/24 14:30:23 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/10/24 15:01:40 by aneitenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	calculate_step(t_ray *ray, t_player *player)
 ** Digital Differential Analysis
 ** Finds which grid cell (map[x,y]) has a wall along the ray
 */
-void    perform_dda(t_ray *ray, char **map, int widht)
+void    perform_dda(t_ray *ray, char **map, int width)
 {
 	while (ray->hit == 0)
 	{
@@ -56,7 +56,7 @@ void    perform_dda(t_ray *ray, char **map, int widht)
 			ray->map_y += ray->step_y;
 			ray->side = 1;
 		}
-		if (ray->map_x >= 1 && ray->map_x < widht
+		if (ray->map_x >= 1 && ray->map_x < width
 			&& ray->map_y >= 1 && ray->map_y < count_arg_array(map) - 1)
 		{
 			if (map[ray->map_y][ray->map_x] == '1')
@@ -120,7 +120,7 @@ void    ray_casting(t_game *game)
 	{
 		init_ray(&ray, &game->player, x);
 		calculate_step(&ray, &game->player);
-		perform_dda(&ray, game->map, game->widht);
+		perform_dda(&ray, game->map, game->width);
 		calculate_wall(&ray, &game->player, &draw);
 		draw_textured_wall_slice(game, &ray, draw, x);
 		draw_floor_ceiling(game->img, x, &draw, game);

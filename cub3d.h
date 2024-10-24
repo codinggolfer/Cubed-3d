@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: aneitenb <aneitenb@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 13:07:01 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/10/24 14:27:03 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/10/24 15:01:51 by aneitenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ typedef struct s_game {
 	int				tex_y;// Y-coordinate on texture
 	double			tex_scale;// Scaling size for texture mapping
 	double			tex_pos;// Current texture position
-	int				widht;
+	int				width;
 } t_game;
 
 typedef struct s_img
