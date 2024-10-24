@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   run.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: aneitenb <aneitenb@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 16:43:25 by aneitenb          #+#    #+#             */
-/*   Updated: 2024/10/22 18:30:06 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/10/24 10:03:20 by aneitenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	key_calls(void *param)
 {
-	t_game		*game;
+	t_game	*game;
 
 	game = param;
 	if (mlx_is_key_down(game->mlx, MLX_KEY_ESCAPE))
@@ -38,8 +38,9 @@ void	key_calls(void *param)
 
 void game_loop(void* param)
 {
-	t_game *game = (t_game*)param;
+	t_game	*game;
 	
+	game = (t_game*)param;
 	ray_casting(game);
 }
 

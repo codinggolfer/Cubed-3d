@@ -6,7 +6,7 @@
 /*   By: aneitenb <aneitenb@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 11:39:07 by aneitenb          #+#    #+#             */
-/*   Updated: 2024/10/23 16:25:27 by aneitenb         ###   ########.fr       */
+/*   Updated: 2024/10/24 09:48:37 by aneitenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,6 @@ void	init_game(t_game *game, t_data *data)
 	game->wall_x = 0;
 	game->tex_x = 0;
 	game->tex_y = 0;
-	game->step = 0;
+	game->tex_scale = 0;
 	game->tex_pos = 0;
 }
