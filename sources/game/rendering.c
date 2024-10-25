@@ -6,7 +6,7 @@
 /*   By: aneitenb <aneitenb@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 11:26:09 by aneitenb          #+#    #+#             */
-/*   Updated: 2024/10/25 10:22:22 by aneitenb         ###   ########.fr       */
+/*   Updated: 2024/10/25 11:16:47 by aneitenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,8 @@ static mlx_texture_t	*select_wall_texture(t_game *game, t_ray *ray)
 	if (ray->side == 0)
 	{
 		if (ray->ray_dir_x > 0)
-			return (game->we_txt);
-		return (game->ea_txt);
+			return (game->ea_txt);
+		return (game->we_txt);
 	}
 	else
 	{

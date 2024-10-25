@@ -1,0 +1,23 @@
+NO                        ./textures/brick3.png
+
+C                            112,222,100            
+
+SO         ./textures/south.png
+
+WE                             ./textures/brick4.png
+
+
+F                                   100,202,244          
+
+EA                                      ./textures/brick5.png
+
+111
+101
+101
+1S1
+101
+101
+101
+101
+101
+111
