@@ -6,7 +6,7 @@
 /*   By: aneitenb <aneitenb@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 14:14:45 by aneitenb          #+#    #+#             */
-/*   Updated: 2024/10/24 17:39:51 by aneitenb         ###   ########.fr       */
+/*   Updated: 2024/10/24 18:36:41 by aneitenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	calculate_step(t_ray *ray, t_player *player)
 /*
 ** Digital Differential Analysis
 ** Finds which grid cell (map[x,y]) has a wall along the ray
+** ray->side 0 means vertical wall, ray->side 1 means horizontal
 */
 void	perform_dda(t_ray *ray, char **map, int width)
 {

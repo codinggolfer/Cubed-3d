@@ -6,12 +6,16 @@
 /*   By: aneitenb <aneitenb@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 11:26:09 by aneitenb          #+#    #+#             */
-/*   Updated: 2024/10/24 17:39:53 by aneitenb         ###   ########.fr       */
+/*   Updated: 2024/10/25 10:22:22 by aneitenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
+/*
+** Draws the floor from the end of the wall to the bottom of the screen
+** Draws the ceiling from the top of the screen to the start of the wall
+*/
 void	draw_floor_ceiling(mlx_image_t *img, int x, t_draw *draw, t_game *game)
 {
 	int	y;
@@ -38,7 +42,7 @@ void	draw_floor_ceiling(mlx_image_t *img, int x, t_draw *draw, t_game *game)
 ** to a texture x-coordinate, adjusting for wall orientation/direction.
 ** Then determines how to scale and position the texture using the wall's 
 ** true height to maintain proper proportions even at close distances.
-** The step value controls texture scaling, while tex_pos determines where to
+** The tex_scale value controls texture scaling, while tex_pos shows where to
 ** start the texture when walls extend beyond the screen.
 */
 void	calculate_texture_coords(t_game *game, t_ray *ray, t_draw draw,
@@ -60,6 +64,9 @@ void	calculate_texture_coords(t_game *game, t_ray *ray, t_draw draw,
 	game->tex_pos = (draw.texture_offset) * game->tex_scale;
 }
 
+/*
+** vertical wall hit(0), horizontal wall hit(1)
+*/
 static mlx_texture_t	*select_wall_texture(t_game *game, t_ray *ray)
 {
 	if (ray->side == 0)
@@ -76,6 +83,15 @@ static mlx_texture_t	*select_wall_texture(t_game *game, t_ray *ray)
 	}
 }
 
+/*
+** Renders one vertical strip of wall texture
+** For each pixel in wall height:
+**	* Calculates texture y-coordinate
+**	* Gets RGBA values from texture data
+**	* Combines into single color value
+**	* Draws to screen
+** tex_pos and tex_scale handle proper texture stretching
+*/
 void	draw_textured_wall_slice(t_game *game, t_ray *ray, t_draw draw, int x)
 {
 	mlx_texture_t	*texture;
@@ -88,7 +104,7 @@ void	draw_textured_wall_slice(t_game *game, t_ray *ray, t_draw draw, int x)
 	y = draw.start;
 	while (y < draw.end)
 	{
-		game->tex_y = (int)game->tex_pos & (texture->height - 1);
+		game->tex_y = (int)game->tex_pos % texture->height;
 		game->tex_pos += game->tex_scale;
 		pixel = (uint8_t *)(texture->pixels + \
 			(game->tex_y * texture->width + game->tex_x) * \
