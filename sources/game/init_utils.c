@@ -6,7 +6,7 @@
 /*   By: aneitenb <aneitenb@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 10:50:37 by aneitenb          #+#    #+#             */
-/*   Updated: 2024/10/24 17:39:42 by aneitenb         ###   ########.fr       */
+/*   Updated: 2024/10/25 13:36:26 by aneitenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,13 @@
 ** takes a char** representing RGB values and converts them into a single 
 ** integer that represents the color
 */
-int	create_trgb(char **floor)
+int create_trgb(char **floor)
 {
-	int	tmp;
+    uint32_t color;
 
-	tmp = 0;
-	tmp = ft_atoi(floor[0]) << 16;
-	tmp += ft_atoi(floor[1]) << 8;
-	tmp += ft_atoi(floor[2]);
-	return (tmp);
+    color = (ft_atoi(floor[0]) << 24) | (ft_atoi(floor[1]) << 16) |
+		(ft_atoi(floor[2]) << 8) | 0xFF;
+    return (color);
 }
 
 /*
