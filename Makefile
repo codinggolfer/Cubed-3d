@@ -32,15 +32,20 @@ CC		=	cc
 CFLAGS	=	-Wall -Wextra -Werror -Ofast 
 RM		=	rm -f
 
-all:	$(LIBFT) libmlx $(NAME)
+all:	mlx42 $(LIBFT) libmlx $(NAME)
+
+mlx42:
+	@if [ ! -d $(LIBMLX) ]; then \
+		git clone https://github.com/codam-coding-college/MLX42.git; \
+	fi
+
+libmlx:
+	@if [ ! -d $(LIBMLX)/build ]; then \
+		cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4; \
+	fi
 
 $(NAME): ./includes/cub3d.h $(FtoO) 
 	$(CC) $(CFLAGS) $(HEADERS) $(FtoO) $(INCLUDES) $(LIBS) $(LIBFT) -o $(NAME)
-
-libmlx: 
-	@if [ ! -d $(LIBMLX)/build ]; then\
-		cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4;\
-	fi
 
 $(LIBFT):
 	@make -C ./libft
