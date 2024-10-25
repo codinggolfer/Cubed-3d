@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 13:25:36 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/10/25 10:40:21 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/10/25 11:00:24 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,7 @@ void	check_map(char *str, t_data *data)
 	if (fd == -1 || !ft_strnstr(str + len, ".cub", 4))
 	{
 		free_structs(data);
-		ft_error("Error\nCan't open the map needs to be in format *.cub and legit path.");
+		ft_error("Error\nCan't open the map.");
 	}
 	find_coordinates(fd, data);
 	find_map(fd, data);
