@@ -6,7 +6,7 @@
 /*   By: aneitenb <aneitenb@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 11:26:09 by aneitenb          #+#    #+#             */
-/*   Updated: 2024/10/25 11:16:47 by aneitenb         ###   ########.fr       */
+/*   Updated: 2024/10/28 12:44:35 by aneitenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,9 @@ void	calculate_texture_coords(t_game *game, t_ray *ray, t_draw draw,
 		ray->ray_dir_x;
 	game->wall_x -= floor(game->wall_x);
 	game->tex_x = (int)(game->wall_x * texture->width);
-	if (ray->side == 0 && ray->ray_dir_x > 0)
+	if (ray->side == 0 && ray->ray_dir_x < 0)
 		game->tex_x = texture->width - game->tex_x - 1;
-	if (ray->side == 1 && ray->ray_dir_y < 0)
+	if (ray->side == 1 && ray->ray_dir_y > 0)
 		game->tex_x = texture->width - game->tex_x - 1;
 	game->tex_scale = (double)texture->height / ray->true_line_height;
 	game->tex_pos = (draw.texture_offset) * game->tex_scale;
