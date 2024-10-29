@@ -6,7 +6,7 @@
 /*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 13:25:36 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/10/25 11:00:24 by eagbomei         ###   ########.fr       */
+/*   Updated: 2024/10/29 10:45:29 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,12 @@ void	check_map(char *str, t_data *data)
 	int	fd;
 	int	len;
 
+	fd = open(str, __O_DIRECTORY);
+	if (fd > 0)
+	{
+		free_structs(data);
+		ft_error("Error\nmap is directory.");
+	}
 	len = ft_strlen(str) - 4;
 	fd = open(str, O_RDONLY);
 	if (fd == -1 || !ft_strnstr(str + len, ".cub", 4))
@@ -130,6 +136,7 @@ void	check_map(char *str, t_data *data)
 		free_structs(data);
 		ft_error("Error\nCan't open the map.");
 	}
+	check_empty(&fd, data, str);
 	find_coordinates(fd, data);
 	find_map(fd, data);
 	close (fd);

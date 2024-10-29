@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aneitenb <aneitenb@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 13:07:01 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/10/24 17:42:56 by aneitenb         ###   ########.fr       */
+/*   Updated: 2024/10/29 10:46:01 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,6 +150,7 @@ void	ft_error(char *msg);
 int		count_arg_array(char **array);
 void	free_2darray(char **array);
 void	free_structs(t_data *data);
+void	check_empty(int *fd, t_data *data, char *str);
 
 //move
 void	move_up(t_game *game, t_player *p);

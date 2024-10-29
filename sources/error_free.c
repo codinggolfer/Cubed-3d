@@ -3,14 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   error_free.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aneitenb <aneitenb@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: eagbomei <eagbomei@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 13:33:23 by eagbomei          #+#    #+#             */
-/*   Updated: 2024/10/24 17:40:30 by aneitenb         ###   ########.fr       */
+/*   Updated: 2024/10/29 10:45:34 by eagbomei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+
+void	check_empty(int *fd, t_data *data, char *str)
+{
+	char	*tmp;
+	
+	tmp = get_next_line(*fd);
+	if (!tmp)
+	{
+		close(*fd);
+		free_structs(data);
+		ft_error("Error\nempty map.");
+	}
+	free (tmp);
+	close(*fd);
+	*fd = open(str, O_RDONLY);
+	if (*fd == -1)
+	{
+		free_structs(data);
+		ft_error("Error\nCan't open the map.");
+	}
+}
 
 void	ft_error(char *msg)
 {
